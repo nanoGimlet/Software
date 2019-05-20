@@ -7,5 +7,5 @@
 [サーバー：MultiServerSample.java](./MultiServerSample.java)  
 [クライアント：MultiClientSample.java](./MultiClientSample.java)  
 
-・“java MultiServerSample でサーバーを立てる。 
+・“java MultiServerSample でサーバーを立てる。  
 ・複数のコマンドプロンプトから“java MultiClientSample.java localhost "好きな文字"”でメッセージを送信。
