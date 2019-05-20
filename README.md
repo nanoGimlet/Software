@@ -7,5 +7,5 @@
 [サーバー：MultiServerSample.java](./MultiServerSample.java)  
 [クライアント：MultiClientSample.java](./MultiClientSample.java)  
 
-・“java MultiServerSample 30000”でポート番号を指定  
-・複数のコマンドプロンプトから“java MultiClientSample.java localhost "好きな文字"”でメッセージを送信
+・“java MultiServerSample でサーバーを立てる。 
+・複数のコマンドプロンプトから“java MultiClientSample.java localhost "好きな文字"”でメッセージを送信。
