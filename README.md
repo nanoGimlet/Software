@@ -51,5 +51,6 @@
 [Server:](./ChatServer.java)  
 [Serverに必要なクラス:](./ServerThread.java)  
 [Client:](./ChatClient.java)  
-[Clientに必要なクラス](./Connect.java) (./Reaction.java)  
+[Clientに必要なクラス（接続と文字表示）](./Connect.java)
+[Clientに必要なクラス（文字送信）](./Reaction.java)  
 [共通クラス:](./ReaderWriter.java)  
