@@ -1,36 +1,64 @@
-// package sample;
-
-// これは複数のクライアントを相手にするために作ったスレッドだよ。これがないと1対複数ができない！
-// ここにクライアントに送る用意ができてるから、ここを改良するのが僕の仕事。
-
-import java.net.*;
 import java.io.*;
+import java.net.Socket;
+import java.util.Vector;
 
-class ServerThread extends Thread{
-    private Socket soc;
+class ServerThread extends Thread {
+    public static final int PORT = 19190;
+    static Vector threads;
+    Socket socket;
 
-    public ServerThread(Socket sct){
-        soc = sct;
+    public ServerThread(Socket sct) {
+        super();
+        socket = sct;
+        if (threads == null) {
+            threads = new Vector();
+        }
+        threads.add(this);
     }
 
-    @Override
-    public void run(){
+    public void run() {
         try {
-            ReadWrite RWserver = new ReadWrite(soc);
-            while(true){
-                String line = RWserver.in.readLine();
-                if(line.equals("END")) break;
-                System.out.println(line);
-                RWserver.out.println(line);
+            System.err.println("*** Connected ***");
+            ReaderWriter RWs = new ReaderWriter(socket);
+
+            while (true) {
+                try {
+                    String mess = RWs.in.readLine();
+                    if (mess == null) {
+                        socket.close();
+                        threads.remove(this);
+                        return;
+                    }
+                    talk(mess);
+                } catch (IOException e) {
+                    System.err.println("*** Connection closed ***");
+                    socket.close();
+                    threads.remove(this);
+                    return;
+                }
             }
-        } catch(IOException ioex) {
-            ioex.printStackTrace();
-        } finally {
-            try{
-                soc.close();
-            } catch (IOException ie){
-                ie.printStackTrace();
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+    }
+
+    public void talk(String str) {
+        for(int i = 0; i < threads.size(); i++) {
+            ServerThread st = (ServerThread)threads.get(i);
+            if (st.isAlive()) {
+                st.talkone(str);
             }
+        }
+        System.err.println(str);
+    }
+
+    public void talkone(String str) {
+        try {
+            ReaderWriter RWs = new ReaderWriter(socket);
+            RWs.out.println(str);
+            RWs .out.flush();
+        } catch (IOException e) {
+            System.err.println(e);
         }
     }
 }
