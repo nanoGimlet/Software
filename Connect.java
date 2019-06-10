@@ -13,7 +13,7 @@ public class Connect {
             ReaderWriter RWc = new ReaderWriter(soc);
             RWc.out.flush();
             System.err.println("*** Connection Success ***");
-            Reaction r = new Reaction(soc);
+            SendThread r = new SendThread(new ReaderWriter (soc));
             r.start();
             while (soc != null && soc.isConnected()) {
                 String line = RWc.in.readLine();
