@@ -17,7 +17,11 @@ public class Reaction extends Thread {
                 while (true) {
                     RWc = new ReaderWriter(soc);
                     Scanner sc = new Scanner(System.in);
-                    String str = sc.next();
+                    String str = sc.nextLine();
+                    while (str.length() > 50) {
+                        System.err.println("50文字以内で入力してください。現在入力数：" + str.length());
+                        str = sc.nextLine();
+                    }
                     RWc.out.println(str);
                     RWc.out.flush();
                 }
