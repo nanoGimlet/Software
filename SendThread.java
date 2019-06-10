@@ -35,7 +35,7 @@ class SendThread extends Thread {
                 }
                 System.out.println(RWcl.in.readLine());
              }              
-        } catch (IOException e) {
+        }catch(IOException e) {
                 System.out.println("IOException");
                 e.printStackTrace();
            }
