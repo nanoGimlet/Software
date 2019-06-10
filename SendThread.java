@@ -11,9 +11,9 @@ import java.util.*;
 import javax.sound.sampled.Line;
 
 class SendThread extends Thread {
-    private ReadWrite RWcl;
+    private ReaderWriter RWcl;
 
-    public  SendThread (ReadWrite RW) {
+    public  SendThread (ReaderWriter RW) {
         RWcl = RW;
     }
 
