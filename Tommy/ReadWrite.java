@@ -1,10 +1,5 @@
 // package sample;
 
-// これはbufferedとかprintwriterが両方に共通の作業だったのでまとめたクラス
-// inには送られてきたやつが入ってる。outには送りたいやつを入れる。
-// つまりClient側ではoutにしたやつがServerに。Serverでinに入ってるのがClientから送られてきたやつ。
-
-
 import java.io.*;
 import java.net.Socket;
 

@@ -1,6 +1,3 @@
-//サーバーから送られてきた文字の表示専門のクラス
-
-
 import java.io.*;
 import java.net.*;
 

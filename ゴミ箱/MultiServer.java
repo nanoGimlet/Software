@@ -3,14 +3,14 @@ import java.net.*;
 import java.util.*;
 
 public class MultiServer{
-    public static int PORT;    //  ƒ|[ƒg”Ô†‚ğİ’è‚·‚é
+    public static int PORT;    //  ï¿½|ï¿½[ï¿½gï¿½Ôï¿½ï¿½ï¿½İ’è‚·ï¿½ï¿½
     public static void main(String[] args) throws IOException{
         Scanner sc = new Scanner(System.in);
         PORT = sc.nextInt();
-        ServerSocket s = new ServerSocket(PORT);    //  ƒ\ƒPƒbƒg‚ğì¬‚·‚é
+        ServerSocket s = new ServerSocket(PORT);    //  ï¿½\ï¿½Pï¿½bï¿½gï¿½ï¿½ï¿½ì¬ï¿½ï¿½ï¿½ï¿½
         System.out.println("Started: " + s);
 
-        // ‚±‚±‚Åƒ}ƒ‹ƒ`ƒXƒŒƒbƒh‚ğ¶¬B¡‚Í‚RŒÂ‚¾‚¯ì‚ê‚é‚æ‚¤‚É‚È‚Á‚Ä‚é
+        // ï¿½ï¿½ï¿½ï¿½ï¿½Åƒ}ï¿½ï¿½ï¿½`ï¿½Xï¿½ï¿½ï¿½bï¿½hï¿½ğ¶ï¿½ï¿½Bï¿½ï¿½ï¿½Í‚Rï¿½Â‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ‚¤ï¿½É‚È‚ï¿½ï¿½Ä‚ï¿½
         
         try{
             for(int i = 0; i < 3; i++){

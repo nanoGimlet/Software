@@ -8,7 +8,6 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
-import javax.sound.sampled.Line;
 
 class SendThread extends Thread {
     private ReaderWriter RWcl;
