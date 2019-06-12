@@ -3,7 +3,6 @@
 // これがメインのクライアントだよ。
 // ここにクラスを追加していこう。
 // りょうごはGUIにするときもしかしたらこいつ自体もスレッドにしないといけないかもしれないからそれは頑張ってくれ。
-
 import java.io.*;
 import java.net.*;
 
@@ -19,10 +18,10 @@ public class ChannelClient {
             PresentThread pt1 = new PresentThread(RWclient);
             st1.start();
             pt1.start();
-            st1.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
+            ChatClient2 listener = new ChatClient2(socket);//リスナーの宣言とスタート
+            
+        } 
+        catch(IOException e){
             System.out.println("closing...");
             socket.close();
         }

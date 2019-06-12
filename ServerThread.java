@@ -1,17 +1,18 @@
 import java.io.*;
 import java.net.Socket;
-import java.util.Vector;
+import java.util.*;
+
 
 class ServerThread extends Thread {
     public static final int PORT = 19190;
-    static Vector threads;
+    static List<ServerThread> threads;
     Socket socket;
 
     public ServerThread(Socket sct) {
         super();
         socket = sct;
         if (threads == null) {
-            threads = new Vector();
+            threads = new ArrayList<ServerThread>();
         }
         threads.add(this);
     }
@@ -44,7 +45,7 @@ class ServerThread extends Thread {
 
     public void talk(String str) {
         for(int i = 0; i < threads.size(); i++) {
-            ServerThread st = (ServerThread)threads.get(i);
+            ServerThread st = threads.get(i);
             if (st.isAlive()) {
                 st.talkone(str);
             }

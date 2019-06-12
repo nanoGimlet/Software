@@ -8,10 +8,12 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
-class SendThread extends Thread {
-    private ReadWrite RWcl;
+import javax.sound.sampled.Line;
 
-    public  SendThread (ReadWrite RW) {
+class SendThread extends Thread {
+    private ReaderWriter RWcl;
+
+    public  SendThread (ReaderWriter RW) {
         RWcl = RW;
     }
 
@@ -21,17 +23,21 @@ class SendThread extends Thread {
             System.out.println(currentThread());
             while (true) {
                 Scanner sc1 = new Scanner(System.in);
-                String line = sc1.next();
+                String line = sc1.nextLine();//空白文字含めた文章の入力
+                while(line.length()>50){
+                    System.out.println("50文字以内で入力してください。現在入力数："+line.length());//文字数を規制
+                    line = sc1.nextLine();
+                }               
                 if (line == "END") {
                     break;
                 } else {
                     RWcl.out.println(line);
                 }
                 System.out.println(RWcl.in.readLine());
-            }
-        } catch (IOException e) {
-            System.out.println("IOException");
-            e.printStackTrace();
+             }              
+        }catch(IOException e) {
+                System.out.println("IOException");
+                e.printStackTrace();
+           }
         }
     }
-}
