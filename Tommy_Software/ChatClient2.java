@@ -1,6 +1,3 @@
-//サーバーから送られてきた文字の表示専門のクラス
-
-
 import java.io.*;
 import java.net.*;
 
@@ -11,6 +8,7 @@ public class ChatClient2 extends Thread {
         this.start();
     }
     
+    @Override
     public void run(){
         try{
             while(true){

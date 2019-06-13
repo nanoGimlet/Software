@@ -1,6 +1,10 @@
 # ソフトウェア制作用
 
 ## 独り言
+(6/14)
+・トミーがまとめてくれたのでいい気がする…（ChatClient2とServerThreadがかぶってる…？）  
+・時間載せておきました。  
+・Chatver2に完成品入れておきます。  
 (6/10)
 ・多分想定してるCUIの原型ができたと思う。一番てこずったのはスレッドを配列のようにして全員に受け取った文字を送信するやつ。  
 ・今は嬉しくなって取り敢えずpushしたけどもう少し読みやすくするのとコメント付けますね。
@@ -31,10 +35,4 @@
 [データ送信クラス：](./SendThread.java)  
 [サーバーのデータ表示クラス：](./PresentThread.java)  
 
-## 多分想定してるソフトの原型（まだ汚い）
-[Server:](./ChatServer.java)  
-[Serverに必要なクラス:](./ServerThread.java)  
-[Client:](./ChatClient.java)  
-[Clientに必要なクラス（接続と文字表示）](./Connect.java)
-[Clientに必要なクラス（文字送信）](./Reaction.java)  
-[共通クラス:](./ReaderWriter.java)  
+## 多分想定してるソフトの原型（Chatver2）

@@ -10,7 +10,7 @@ public class ChatClient {
         try {
             InetAddress addr = InetAddress.getByName(server);
             socket = new Socket(addr, PORT);
-            Connect con= new Connect();
+            Connect con = new Connect();
             con.connect(socket);
         }catch (IOException e) {
         }
