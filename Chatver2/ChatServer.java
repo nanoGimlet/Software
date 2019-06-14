@@ -8,7 +8,6 @@ public class ChatServer {
         try {
             ServerSocket server = new ServerSocket(PORT);
             System.err.println("Started : " + PORT);
-            System.err.println(InetAddress.getLocalHost().getHostAddress());
             while (true) {
                 try {
                     Socket socket = server.accept();

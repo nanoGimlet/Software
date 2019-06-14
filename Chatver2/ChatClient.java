@@ -4,11 +4,12 @@ import java.net.Socket;
 import java.util.*;
 
 public class ChatClient {
-    public static final int PORT = 19190;
+    public static int PORT;
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
-        String scr = sc.next();
-        String server = scr;
+        String server = InetAddress.getLocalHost().getHostAddress();
+        System.out.print("PORT : ");
+        Scanner scp = new Scanner(System.in);
+        PORT = scp.nextInt();
         Socket socket = null;
         try {
             InetAddress addr = InetAddress.getByName(server);
