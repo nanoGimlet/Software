@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -11,9 +13,9 @@
 
 <AnchorPane fx:id="button1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <VBox fx:id="VBox1" layoutX="43.0" layoutY="290.0" prefHeight="96.0" prefWidth="516.0">
+      <VBox fx:id="VBox1" layoutX="43.0" layoutY="290.0" prefHeight="127.0" prefWidth="516.0">
          <children>
-            <Label fx:id="label1" prefHeight="29.0" prefWidth="142.0" text="文字入力してね">
+            <Label fx:id="label1" prefHeight="29.0" prefWidth="516.0" text="文字入力してね">
                <padding>
                   <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
                </padding>
@@ -21,10 +23,10 @@
                   <Font size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets left="180.0" right="100.0" />
+                  <Insets />
                </VBox.margin>
             </Label>
-            <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" />
+            <TextArea fx:id="textArea" prefHeight="36.0" prefWidth="516.0" />
             <Button mnemonicParsing="false" onAction="#onButton1Action" text="送信">
                <VBox.margin>
                   <Insets left="20.0" />
@@ -32,17 +34,13 @@
             </Button>
          </children>
       </VBox>
-      <HBox fx:id="HBox1" prefHeight="273.0" prefWidth="600.0">
-         <children>
-            <Label fx:id="label2" prefHeight="33.0" prefWidth="600.0" text="みんなの意見">
-               <HBox.margin>
-                  <Insets left="210.0" right="150.0" />
-               </HBox.margin>
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-         </children>
-      </HBox>
+      <Label fx:id="label2" layoutY="-2.0" prefHeight="42.0" prefWidth="601.0" text="　　　　　　　　　　みんなの意見">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <ListView fx:id="ListView1" layoutY="40.0" prefHeight="249.0" prefWidth="601.0" />
+      <Button fx:id="extraButton" layoutX="167.0" layoutY="356.0" mnemonicParsing="false" onAction="#extraFuncButtonAction" text="追加機能" />
+      <Button fx:id="closeButton" layoutX="440.0" layoutY="374.0" mnemonicParsing="false" onAction="#onCloseAction" text="退出" />
    </children>
 </AnchorPane>

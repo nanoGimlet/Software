@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirstWindowController">
+   <children>
+      <Label layoutX="7.0" layoutY="14.0" prefHeight="17.0" prefWidth="600.0" text="　　こんにちは！今日も素敵な一日になりますように^ ^" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="66.0" prefHeight="17.0" prefWidth="584.0" text="どのチャット入ろうか？">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="chatButton1" layoutX="78.0" layoutY="118.0" mnemonicParsing="false" onAction="#onAction" prefHeight="111.0" prefWidth="196.0" text="2ch">
+         <graphic>
+            <ImageView fitHeight="103.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@2ch.jpg" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="chatButton2" layoutX="300.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="110.0" prefWidth="196.0" text="5ch">
+         <graphic>
+            <ImageView fitHeight="102.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@5ch.jpg" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="chatButton3" layoutX="156.0" layoutY="252.0" mnemonicParsing="false" onAction="#onAction" text="情報理工学科">
+         <graphic>
+            <ImageView fitHeight="122.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@blackhistory.jpg" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+   </children>
+</AnchorPane>

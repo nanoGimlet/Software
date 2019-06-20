@@ -9,8 +9,10 @@ public class Mainapp extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("app.fxml"));
-        
+
+
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("app2.fxml"));
+
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

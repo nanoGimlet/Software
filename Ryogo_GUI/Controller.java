@@ -1,11 +1,22 @@
+//コンパイル時、UTF-8でエンコード
+
 import javafx.event.ActionEvent;
+import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.Scene;
+import javafx.scene.Node;
+import javafx.stage.Window;
+import javafx.stage.Stage;
 
 
 public class Controller{
@@ -19,6 +30,9 @@ public class Controller{
     private AnchorPane button1;
 
     @FXML
+    private Button closeButton;
+
+    @FXML
     private Label label1;
 
     @FXML
@@ -28,12 +42,50 @@ public class Controller{
     private TextArea textArea;
 
     @FXML
+    private ListView<String> ListView1;
+
+    @FXML
     void onButton1Action(ActionEvent event) {
         String str = textArea.getText();
-        Label label3 = new Label();
-        label3.setText(str);
-        HBox1.setHgrow(label3,Priority.ALWAYS);
-        textArea.setText("");
+        if (str.length() > 50){
+            label1.setText("50文字以内で入力してください．(現在："+str.length()+"文字)");
+            label1.setTextFill(Color.RED);
+        }
+        else {
+            //the sending message event to server is needed. it will be come true with SendThread.
+            label1.setText("文字入力してね");
+            label1.setTextFill(Color.BLACK);
+            ListView1.getItems().add(str); //here is ServerThread
+            textArea.setText("");
+        }
+    }
+
+    @FXML
+    void extraFuncButtonAction(ActionEvent event){
+        try {
+            showExtraButtonAction();
+        } catch (Exception ex) {
+            System.out.println("error");
+        }
+    }
+
+    void showExtraButtonAction() {
+        try {
+            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("extraApp.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+
+        }
+    }
+
+    @FXML
+    void onCloseAction(ActionEvent event){
+        Scene scene=((Node)event.getSource()).getScene();
+        Window window=scene.getWindow();
+        window.hide();
     }
 
 }
