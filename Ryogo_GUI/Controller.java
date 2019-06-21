@@ -74,7 +74,7 @@ public class Controller{
     @FXML
     void onMentionAction(ActionEvent event){
         String value=mentionBox1.getValue();
-        textArea.setText(">>"+value+"\n");
+        textArea.setText(">>"+value+" ");
     }
 
     @FXML
