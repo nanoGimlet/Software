@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.stage.Window;
 import javafx.stage.Stage;
+import javafx.scene.control.ComboBox;
 
 
 public class Controller{
@@ -33,6 +34,9 @@ public class Controller{
     private Button closeButton;
 
     @FXML
+    private Button mentionButton;
+
+    @FXML
     private Label label1;
 
     @FXML
@@ -45,19 +49,32 @@ public class Controller{
     private ListView<String> ListView1;
 
     @FXML
+    private ComboBox<String> mentionBox1;
+
+    int i=1;
+
+    @FXML
     void onButton1Action(ActionEvent event) {
         String str = textArea.getText();
-        if (str.length() > 50){
-            label1.setText("50文字以内で入力してください．(現在："+str.length()+"文字)");
+        if (str.length() > 100){
+            label1.setText("100文字以内で入力してください．(現在："+str.length()+"文字)");
             label1.setTextFill(Color.RED);
         }
         else {
             //the sending message event to server is needed. it will be come true with SendThread.
             label1.setText("文字入力してね");
             label1.setTextFill(Color.BLACK);
-            ListView1.getItems().add(str); //here is ServerThread
+            ListView1.getItems().add(i+"："+str); //here is ServerThread
             textArea.setText("");
+            mentionBox1.getItems().add(i+"");
+            i++;
         }
+    }
+
+    @FXML
+    void onMentionAction(ActionEvent event){
+        String value=mentionBox1.getValue();
+        textArea.setText(">>"+value+"\n");
     }
 
     @FXML
