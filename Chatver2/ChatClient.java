@@ -5,6 +5,7 @@ import java.util.*;
 
 public class ChatClient {
     public static int PORT;
+
     public static void main(String[] args) throws IOException {
         String server = InetAddress.getLocalHost().getHostAddress();
         System.out.print("PORT : ");
@@ -16,7 +17,7 @@ public class ChatClient {
             socket = new Socket(addr, PORT);
             Connect con = new Connect();
             con.connect(socket);
-        }catch (IOException e) {
+        } catch (IOException e) {
         }
     }
 }
