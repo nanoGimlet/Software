@@ -2,6 +2,8 @@
 
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -51,58 +53,58 @@ public class Controller{
     @FXML
     private ComboBox<String> mentionBox1;
 
-    int i=1;
+    static String str;
 
     @FXML
-    void onButton1Action(ActionEvent event) {
-        String str = textArea.getText();
+    void onButton1Action(ActionEvent event)throws Exception {
+        //startThread();
+        /*String*/ str = textArea.getText();
         if (str.length() > 100){
             label1.setText("100文字以内で入力してください．(現在："+str.length()+"文字)");
             label1.setTextFill(Color.RED);
         }
         else {
-            //the sending message event to server is needed. it will be come true with SendThread.
             label1.setText("文字入力してね");
             label1.setTextFill(Color.BLACK);
-            ListView1.getItems().add(i+"："+str); //here is ServerThread
+            ListView1.getItems().add(str);
             textArea.setText("");
-            mentionBox1.getItems().add(i+"");
-            i++;
         }
     }
 
+    int once=0;
+    public SendThread send;
+    public Client_ControlMessage controlMessage;
+    Connect client;
+
+    void startThread() throws Exception {
+        if (once == 0) {
+            String server = InetAddress.getLocalHost().getHostAddress();
+            InetAddress addr = InetAddress.getByName(server);
+            Socket socket = new Socket(addr, portController.portnumber);
+            send = new SendThread(new ReaderWriter(socket), client);
+            once = 1;
+            send.start();
+            controlMessage = new Client_ControlMessage(socket);
+        }
+    }
+
+    /*
     @FXML
     void onMentionAction(ActionEvent event){
         String value=mentionBox1.getValue();
         textArea.setText(">>"+value+" ");
     }
-
-    @FXML
-    void extraFuncButtonAction(ActionEvent event){
-        try {
-            showExtraButtonAction();
-        } catch (Exception ex) {
-            System.out.println("error");
-        }
-    }
-
-    void showExtraButtonAction() {
-        try {
-            AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("extraApp.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-
-        }
-    }
+    */
 
     @FXML
     void onCloseAction(ActionEvent event){
         Scene scene=((Node)event.getSource()).getScene();
         Window window=scene.getWindow();
         window.hide();
+    }
+
+    static String getText(){
+        return str;
     }
 
 }

@@ -8,11 +8,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="portController">
    <children>
-      <AnchorPane layoutX="193.0" layoutY="80.0" prefHeight="203.0" prefWidth="200.0">
+      <AnchorPane layoutX="7.0" layoutY="80.0" prefHeight="203.0" prefWidth="589.0">
          <children>
-            <TextArea fx:id="portTextArea" layoutY="102.0" prefHeight="26.0" prefWidth="200.0" />
-            <Button fx:id="portButton" layoutX="71.0" layoutY="161.0" mnemonicParsing="false" onAction="#sendPort" text="確認" />
-            <Label fx:id="portLabel1" layoutX="29.0" layoutY="36.0" prefHeight="17.0" prefWidth="154.0" text="ポート番号を入力してください" />
+            <TextArea fx:id="portTextArea" layoutX="165.0" layoutY="95.0" prefHeight="25.0" prefWidth="259.0" />
+            <Button fx:id="portButton" layoutX="268.0" layoutY="153.0" mnemonicParsing="false" onAction="#sendPort" text="確認" />
+            <Label fx:id="portLabel1" layoutX="2.0" layoutY="36.0" prefHeight="42.0" prefWidth="531.0" text="    　                           　　　　　　　　　ポート番号を入力してください" />
          </children>
       </AnchorPane>
    </children>
