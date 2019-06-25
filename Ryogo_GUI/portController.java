@@ -19,10 +19,8 @@ public class portController {
 
     @FXML
     private TextArea portTextArea;
-
     @FXML
     private Label portLabel1;
-
     @FXML
     private Button portButton;
 
@@ -34,9 +32,7 @@ public class portController {
         try {
             showRoomButtonAction();
             chatClient(portnumber);
-        } catch (Exception ex) {
-
-        }
+        } catch (Exception ex) {}
     }
 
     void chatClient(int PORT) throws IOException {
@@ -46,13 +42,13 @@ public class portController {
         try {
             InetAddress addr = InetAddress.getByName(server);
             socket = new Socket(addr, PORT);
-            //Connect con = new Connect();
-            //con.connect(socket);
         } catch (IOException e) {}
     }
 
     void showRoomButtonAction(){
         if (portnumber == ChatServer.PORT) {
+            portLabel1.setText("                                   　　　　　　           ポート番号を入力してください");
+            portLabel1.setTextFill(Color.BLACK);
             try {
                 AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("app2.fxml"));
                 Scene scene = new Scene(root);

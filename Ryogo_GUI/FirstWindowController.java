@@ -16,37 +16,32 @@ public class FirstWindowController {
 
     @FXML
     private Button chatButton1;
-
     @FXML
     private Button chatButton2;
-
     @FXML
     private Button chatButton3;
-
     @FXML
     private Button chatButton4;
-
     @FXML
     private Button chatButton5;
-
     @FXML
     private Button chatButton6;
-
     @FXML
     private Button chatButton7;
-
     @FXML
     private Button chatButton8;
-
     @FXML
     private Button chatButton9;
-
     @FXML
     private Button chatButton10;
 
-    static String roomName; //
+    static String roomName;
     static String mychatroom;
-    //int once=0;
+    public Socket soc = null;
+    public SendThread send;
+    public Client_ControlMessage controlMessage;
+    public static List<String> chatname2 = new ArrayList<String>();
+    int once=0;
 
     void chooseChat() throws Exception {
         String server = InetAddress.getLocalHost().getHostAddress();
@@ -59,8 +54,7 @@ public class FirstWindowController {
                 chatname2=con2.chatname;
                 once=1;
             }
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
     }
 
     @FXML
@@ -74,8 +68,8 @@ public class FirstWindowController {
             mychatroom=roomName;
             showChatButtonAction();
         }else {
-            System.out.println("not exists");
-            System.out.println("Here shows:"+chatname2.toString());
+            System.err.println("not exists");
+            System.err.println("Here shows:"+chatname2.toString());
         }
     }
 
@@ -91,47 +85,11 @@ public class FirstWindowController {
         }
     }
 
-    //
-    public Socket soc = null;
-    public SendThread send;
-    public Client_ControlMessage controlMessage;
-    public static List<String> chatname2 = new ArrayList<String>();
-    int once=0; //
-
-    public void connect(Socket sct) {
-        try {
-            if(once==0) {
-                soc = sct;
-                ReaderWriter RWclient = new ReaderWriter(soc);
-                RWclient.out.flush();
-                System.err.println("*** Connection Success ***");
-                ThemaAccept ta = new ThemaAccept(soc);
-                ta.join();
-                once=1;
-            }
-            /*System.out.println("以下のいずれかの部屋名を入力してください");
-            System.out.println(chatname.toString());
-            while (!checkname(roomName)) {
-                System.out.println("部屋名が違います。以下の部屋から選択してください。");
-                System.out.println(chatname.toString());
-                mychatroom = FirstWindowController.roomName;
-            }
-            System.out.println(roomName);
-            //send = new SendThread(new ReaderWriter(soc), this);
-            send.start();
-            controlMessage = new Client_ControlMessage(soc);
-            */
-        } catch (IOException e) {
-            System.err.println(e);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     public boolean checkname(String chat) {
         for (String name : chatname2) {
             if (chat.equals(name)) return true;
         }
         return false;
-    }//
+    }
+
 }

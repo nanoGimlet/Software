@@ -1,5 +1,3 @@
-//コンパイル時、UTF-8でエンコード
-
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -21,43 +19,38 @@ import javafx.stage.Window;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
 
-
 public class Controller{
     @FXML
     private VBox VBox1;
-
     @FXML
     private HBox HBox1;
-
     @FXML
     private AnchorPane button1;
-
     @FXML
     private Button closeButton;
-
     @FXML
     private Button mentionButton;
-
     @FXML
     private Label label1;
-
     @FXML
     private Label label2;
-
     @FXML
     private TextArea textArea;
-
     @FXML
     private ListView<String> ListView1;
-
     @FXML
     private ComboBox<String> mentionBox1;
 
     static String str;
+    int once=0;
+    public SendThread send;
+    public Client_ControlMessage controlMessage;
+    Connect client;
+    Socket socket;
 
     @FXML
     void onButton1Action(ActionEvent event)throws Exception {
-        /*String*/ str = textArea.getText();
+        str = textArea.getText();
         if (str.length() > 100){
             label1.setText("100文字以内で入力してください．(現在："+str.length()+"文字)");
             label1.setTextFill(Color.RED);
@@ -71,12 +64,6 @@ public class Controller{
         }
     }
 
-    int once=0;
-    public SendThread send;
-    public Client_ControlMessage controlMessage;
-    Connect client;
-    Socket socket;
-
     void startThread() throws Exception {
         if (once == 0) {
             String server = InetAddress.getLocalHost().getHostAddress();
@@ -86,18 +73,9 @@ public class Controller{
 
         }
         send = new SendThread(new ReaderWriter(socket), client);
-        //send.start();
         controlMessage = new Client_ControlMessage(socket);
         send.start();
     }
-
-    /*
-    @FXML
-    void onMentionAction(ActionEvent event){
-        String value=mentionBox1.getValue();
-        textArea.setText(">>"+value+" ");
-    }
-    */
 
     @FXML
     void onCloseAction(ActionEvent event){
@@ -109,5 +87,4 @@ public class Controller{
     static String getText(){
         return str;
     }
-
 }
