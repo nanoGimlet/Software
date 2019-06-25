@@ -18,9 +18,8 @@ class SendThread extends Thread {
         RWcl.out.println(client.mychatroom+" ");
         try {
             System.out.println(currentThread());
-            while (true) {
-                Scanner sc1 = new Scanner(System.in);
-                String line = client.mychatroom+" "; 
+                //Scanner sc1 = new Scanner(System.in);
+                String line = /*connect*/FirstWindowController.mychatroom+" ";
                 int length = line.length();
                 /*line += sc1.nextLine();
                 while (line.length() > 100+length) {
@@ -29,14 +28,11 @@ class SendThread extends Thread {
                     line += sc1.nextLine();
                 }
                 */
-                line=Controller.getText();
-                System.out.println(line);
-                if (line == "END") {
-                    break;
-                } else {
-                    RWcl.out.println(line);
-                }
-            }
+                line+=Controller.getText();
+                //System.out.println(line);
+            System.out.println(line);
+                RWcl.out.println(line);
+
         } catch (Exception e) {
             System.err.println(e);
         }
