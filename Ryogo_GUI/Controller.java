@@ -57,7 +57,6 @@ public class Controller{
 
     @FXML
     void onButton1Action(ActionEvent event)throws Exception {
-        //startThread();
         /*String*/ str = textArea.getText();
         if (str.length() > 100){
             label1.setText("100文字以内で入力してください．(現在："+str.length()+"文字)");
@@ -67,6 +66,7 @@ public class Controller{
             label1.setText("文字入力してね");
             label1.setTextFill(Color.BLACK);
             ListView1.getItems().add(str);
+            startThread();
             textArea.setText("");
         }
     }
@@ -75,17 +75,20 @@ public class Controller{
     public SendThread send;
     public Client_ControlMessage controlMessage;
     Connect client;
+    Socket socket;
 
     void startThread() throws Exception {
         if (once == 0) {
             String server = InetAddress.getLocalHost().getHostAddress();
             InetAddress addr = InetAddress.getByName(server);
-            Socket socket = new Socket(addr, portController.portnumber);
-            send = new SendThread(new ReaderWriter(socket), client);
+            socket = new Socket(addr, portController.portnumber);
             once = 1;
-            send.start();
-            controlMessage = new Client_ControlMessage(socket);
+
         }
+        send = new SendThread(new ReaderWriter(socket), client);
+        //send.start();
+        controlMessage = new Client_ControlMessage(socket);
+        send.start();
     }
 
     /*
