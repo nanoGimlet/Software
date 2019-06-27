@@ -28,5 +28,6 @@
       <Button fx:id="chatButton8" layoutX="244.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label8" />
       <Button fx:id="chatButton9" layoutX="350.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label9" />
       <Button fx:id="chatButton10" layoutX="457.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label10" />
+      <Button fx:id="updateButton" layoutX="34.0" layoutY="293.0" mnemonicParsing="false" onAction="#getThema" text="テーマを更新する" />
    </children>
 </AnchorPane>

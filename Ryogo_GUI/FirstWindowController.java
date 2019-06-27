@@ -34,6 +34,8 @@ public class FirstWindowController {
     private Button chatButton9;
     @FXML
     private Button chatButton10;
+    @FXML
+    private Button updateButton;
 
     static String roomName;
     static String mychatroom;
@@ -92,4 +94,40 @@ public class FirstWindowController {
         return false;
     }
 
+    int i=4;
+
+    @FXML
+    void getThema(ActionEvent event){
+        String new_thema= "テーマ"; //
+        switch(i){
+            case 4:
+                chatButton4.setText(new_thema);
+                break;
+
+            case 5:
+                chatButton5.setText(new_thema);
+                break;
+
+            case 6:
+                chatButton6.setText(new_thema);
+                break;
+
+            case 7:
+                chatButton7.setText(new_thema);
+                break;
+
+            case 8:
+                chatButton8.setText(new_thema);
+                break;
+
+            case 9:
+                chatButton9.setText(new_thema);
+                break;
+
+            case 10:
+                chatButton10.setText(new_thema);
+                break;
+        }
+        i++;
+    }
 }
