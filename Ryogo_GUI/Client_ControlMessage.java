@@ -11,6 +11,9 @@ public class Client_ControlMessage extends Thread {
         this.start();
     }
 
+    static String Printday=null;
+    static String Printstr=null;
+
     @Override
     public void run() {
         try {
@@ -19,11 +22,18 @@ public class Client_ControlMessage extends Thread {
                 String ReadMessages = reader.in.readLine();
                 String Printon = null;
                 String Printcontent = null;
+
                 for(int i = 0; i < ReadMessages.length(); i++) {
                     if(ReadMessages.charAt(i) == '^') {
                         Printon = ReadMessages.substring(0, i);
                         Printcontent = ReadMessages.substring(i+1, ReadMessages.length());
                         break;
+                    }
+                }
+                for(int i=0;i<Printcontent.length();i++){
+                    if(Printcontent.charAt(i)=='*'){
+                        Printstr=Printcontent.substring(0,i);
+                        Printday=Printcontent.substring(i+1,Printcontent.length());
                     }
                 }
                 // System.out.println(Printon);
@@ -43,6 +53,10 @@ public class Client_ControlMessage extends Thread {
 
             }
         }
+    }
+
+    public static String getDay(){
+        return Printday;
     }
 
     // ReadMessageに来たのが履歴だった時の特別な対応
