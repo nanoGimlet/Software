@@ -6,11 +6,13 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class FirstWindowController {
 
@@ -36,6 +38,8 @@ public class FirstWindowController {
     private Button chatButton10;
     @FXML
     private Button updateButton;
+    @FXML
+    private AnchorPane escapeButton;
 
     static String roomName;
     static String mychatroom;
@@ -43,6 +47,7 @@ public class FirstWindowController {
     public SendThread send;
     public Client_ControlMessage controlMessage;
     public static List<String> chatname2 = new ArrayList<String>();
+
     int once=0;
 
     void chooseChat() throws Exception {
@@ -98,7 +103,7 @@ public class FirstWindowController {
 
     @FXML
     void getThema(ActionEvent event){
-        String new_thema= "テーマ"; //
+        String new_thema= "label1"; //
         switch(i){
             case 4:
                 chatButton4.setText(new_thema);
@@ -130,4 +135,17 @@ public class FirstWindowController {
         }
         i++;
     }
+
+    @FXML
+    void escape(ActionEvent event) throws Exception{
+        Scene scene = ((Node) event.getSource()).getScene();
+        Window window = scene.getWindow();
+        window.hide();
+        try {
+            ;//ソケット閉じたい
+        }catch(Exception e){
+            System.out.println("escape error");
+        }
+    }
+
 }
