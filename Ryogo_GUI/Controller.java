@@ -1,3 +1,4 @@
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -38,6 +39,10 @@ public class Controller{
     private TextArea textArea;
     @FXML
     private ListView<String> ListView1;
+    @FXML
+    private ListView<AnchorPane> ListView2; //
+    @FXML
+    private ObservableList<AnchorPane> ObservableList1;
     @FXML
     private ComboBox<String> mentionBox1;
 
