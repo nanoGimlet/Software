@@ -39,10 +39,10 @@ public class Controller{
     private TextArea textArea;
     @FXML
     private ListView<String> ListView1;
-    @FXML
-    private ListView<AnchorPane> ListView2; //
-    @FXML
-    private ObservableList<AnchorPane> ObservableList1;
+    //@FXML
+    //private ListView<AnchorPane> ListView2; //
+    //@FXML
+    //private ObservableList<AnchorPane> ObservableList1;
     @FXML
     private ComboBox<String> mentionBox1;
 
@@ -64,6 +64,7 @@ public class Controller{
             label1.setText("文字入力してね");
             label1.setTextFill(Color.BLACK);
             ListView1.getItems().add(str);
+            //ObservableList1.setItem()
             startThread();
             textArea.setText("");
         }
