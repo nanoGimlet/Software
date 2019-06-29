@@ -1,5 +1,8 @@
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+
+import java.awt.desktop.AboutHandler;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -19,6 +22,9 @@ import javafx.scene.Node;
 import javafx.stage.Window;
 import javafx.stage.Stage;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
+import javafx.util.Callback;
+import javafx.scene.text.*;
 
 public class Controller{
     @FXML
@@ -38,14 +44,22 @@ public class Controller{
     @FXML
     private TextArea textArea;
     @FXML
-    private ListView<String> ListView1;
-    //@FXML
-    //private ListView<AnchorPane> ListView2; //
-    //@FXML
-    //private ObservableList<AnchorPane> ObservableList1;
+    private ListView<AnchorPane> ListView1;
+    @FXML
+    private ObservableList<AnchorPane> ObservableList1;
     @FXML
     private ComboBox<String> mentionBox1;
+    //@FXML
+    //private ListCell<CustomListCell> listcell;
+    @FXML
+    private AnchorPane talkPane;
+    @FXML
+    private Label dateLabel;
+    @FXML
+    private Label talkLabel;
 
+
+    static String data;
     static String str;
     int once=0;
     public SendThread send;
@@ -53,9 +67,40 @@ public class Controller{
     Connect client;
     Socket socket;
 
+    /*public class CustomListCell extends ListCell<CustomThing>{
+        private Text data;
+        private Text str;
+        private VBox vbox;
+        public CustomListCell(){
+            data=new Text();
+            str=new Text();
+            vbox.setVgrow(data,Priority.ALWAYS);
+            vbox.setVgrow(str,Priority.ALWAYS);
+            vbox.getChildren().addAll(data,str);
+        }
+
+    }
+*/
+    @FXML
+    void initialize(){
+            ObservableList1 = FXCollections.observableArrayList();
+            ListView1.setItems(ObservableList1);
+            //talkPane = FXMLLoader.load(getClass().getResource("talkPane.fxml"));
+        //talkPane.getChildren().add(dateLabel);
+        //talkPane.getChildren().add(talkLabel);
+        //ObservableList1.setAll(talkPane);
+        /*ListView1.setCellFactory(new Callback<ListView<CustomThing>, ListCell<CustomThing>>() {
+            @Override
+            public ListCell<CustomThing> call(ListView<CustomThing> listView) {
+                return new CustomListCell();
+            }
+        });*/
+    }
+    //
     @FXML
     void onButton1Action(ActionEvent event)throws Exception {
         str = textArea.getText();
+        data="date";
         if (str.length() > 100){
             label1.setText("100文字以内で入力してください．(現在："+str.length()+"文字)");
             label1.setTextFill(Color.RED);
@@ -63,13 +108,16 @@ public class Controller{
         else {
             label1.setText("文字入力してね");
             label1.setTextFill(Color.BLACK);
-            ListView1.getItems().add(str);
-            //ObservableList1.setItem()
+            talkPane = FXMLLoader.load(getClass().getResource("talkPane.fxml"));
+            //talkPane.getChildren().add(dateLabel);
+            //talkPane.getChildren().add(talkLabel);
+            //ObservableList1.setAll(talkPane);
+            ObservableList1.add(talkPane); //
             startThread();
             textArea.setText("");
         }
     }
-
+    //
     void startThread() throws Exception {
         if (once == 0) {
             String server = InetAddress.getLocalHost().getHostAddress();
@@ -82,7 +130,7 @@ public class Controller{
         controlMessage = new Client_ControlMessage(socket);
         send.start();
     }
-
+    //
     @FXML
     void onCloseAction(ActionEvent event){
         Scene scene=((Node)event.getSource()).getScene();
@@ -93,4 +141,13 @@ public class Controller{
     static String getText(){
         return str;
     }
+
+    static String getData(){
+        return data;
+    }
+
+    static String str(){
+        return str;
+    }
+
 }
