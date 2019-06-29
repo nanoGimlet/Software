@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Button;
@@ -8,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -37,6 +39,9 @@ public class portController {
         try {
             showRoomButtonAction();
             chatClient(portnumber);
+            Scene scene = ((Node) event.getSource()).getScene();
+            Window window = scene.getWindow();
+            window.hide();
         } catch (Exception ex) {}
     }
 
@@ -64,6 +69,7 @@ public class portController {
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();
+
             } catch (Exception e) {
                 System.out.println("error");
             }

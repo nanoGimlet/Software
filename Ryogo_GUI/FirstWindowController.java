@@ -145,7 +145,7 @@ public class FirstWindowController {
         Window window = scene.getWindow();
         window.hide();
         try {
-            ;//ソケット閉じたい
+            portController.commonSocket.close();
         }catch(Exception e){
             System.out.println("escape error");
         }
