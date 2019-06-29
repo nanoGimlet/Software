@@ -14,6 +14,8 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import javax.naming.ldap.SortKey;
+
 public class FirstWindowController {
 
     @FXML
@@ -46,19 +48,20 @@ public class FirstWindowController {
     public Socket soc = null;
     public SendThread send;
     public Client_ControlMessage controlMessage;
-    public static List<String> chatname2 = new ArrayList<String>();
+    //public static List<String> chatname2 = new ArrayList<String>();
+    //public static Socket commonSocket;
 
     int once=0;
 
     void chooseChat() throws Exception {
-        String server = InetAddress.getLocalHost().getHostAddress();
-        InetAddress addr = InetAddress.getByName(server);
-        Socket socket = new Socket(addr, portController.portnumber);
+        //String server = InetAddress.getLocalHost().getHostAddress();
+        //InetAddress addr = InetAddress.getByName(server);
+        //Socket socket = new Socket(addr, portController.portnumber);
         try {
             if(once==0) {
-                Connect con2 = new Connect();
-                con2.connect(socket);
-                chatname2=con2.chatname;
+                //Connect con2 = new Connect();
+                //con2.connect(portController.commonSocket);
+                //chatname2=con2.chatname;
                 once=1;
             }
         } catch (Exception e) {}
@@ -76,7 +79,7 @@ public class FirstWindowController {
             showChatButtonAction();
         }else {
             System.err.println("not exists");
-            System.err.println("Here shows:"+chatname2.toString());
+            System.err.println("Here shows:"+portController.chatname2.toString());
         }
     }
 
@@ -93,7 +96,7 @@ public class FirstWindowController {
     }
 
     public boolean checkname(String chat) {
-        for (String name : chatname2) {
+        for (String name : portController.chatname2) {
             if (chat.equals(name)) return true;
         }
         return false;

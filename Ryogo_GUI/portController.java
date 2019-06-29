@@ -12,10 +12,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class portController {
 
     static int portnumber;
+    public static Socket commonSocket;
+    public static List<String> chatname2 = new ArrayList<String>();
 
     @FXML
     private TextArea portTextArea;
@@ -42,6 +46,10 @@ public class portController {
         try {
             InetAddress addr = InetAddress.getByName(server);
             socket = new Socket(addr, PORT);
+            commonSocket=socket;
+            Connect con = new Connect(); //
+            con.connect(socket); //
+            chatname2=con.chatname;
         } catch (IOException e) {}
     }
 

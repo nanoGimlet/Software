@@ -1,18 +1,28 @@
 import java.io.*;
 import java.net.*;
 
-import javax.swing.text.AttributeSet.CharacterAttribute;
-
 public class Client_ControlMessage extends Thread {
     Socket socket;
+    int no = 1;
+    String day;
+    String content;
 
     public Client_ControlMessage(Socket socket) {
         this.socket = socket;
         this.start();
     }
 
-    static String Printday=null;
-    static String Printstr=null;
+    public int getNo(){
+        return no;
+    }
+
+    public String getDay(){
+        return day;
+    }
+
+    public String getContent(){
+        return content;
+    }
 
     @Override
     public void run() {
@@ -20,29 +30,19 @@ public class Client_ControlMessage extends Thread {
             while (true) {
                 ReaderWriter reader = new ReaderWriter(socket);
                 String ReadMessages = reader.in.readLine();
-                String Printon = null;
-                String Printcontent = null;
-
-                for(int i = 0; i < ReadMessages.length(); i++) {
-                    if(ReadMessages.charAt(i) == '^') {
-                        Printon = ReadMessages.substring(0, i);
-                        Printcontent = ReadMessages.substring(i+1, ReadMessages.length());
-                        break;
-                    }
-                }
-                for(int i=0;i<Printcontent.length();i++){
-                    if(Printcontent.charAt(i)=='*'){
-                        Printstr=Printcontent.substring(0,i);
-                        Printday=Printcontent.substring(i+1,Printcontent.length());
-                    }
-                }
-                // System.out.println(Printon);
-                // System.out.println(Connect.mychatroom);
-                // System.out.println(ReadMessages);
-                if(ReadMessages.charAt(0)=='['){
+                System.out.println("CC:"+ReadMessages);
+                if (ReadMessages.charAt(0) == '[' && ReadMessages.charAt(1) != ']') {
                     show_log(ReadMessages);
-                }else if(Printon.equals(/*Connect.mychatroom*/FirstWindowController.mychatroom)) {
-                    System.out.println(Printcontent);
+                } else if(ReadMessages.charAt(0) != '[' && ReadMessages.charAt(1) != ']') {
+                    PrintSplit ps = new PrintSplit(ReadMessages);
+                    if (ps.PrintRoom.equals(Connect.mychatroom)) {
+                        System.out.print(no + " ");
+                        System.out.println(ps.Printcontent);
+                        System.out.println(ps.Printnewday);
+                        no++;
+                        day=ps.Printnewday;
+                        content=ps.Printcontent;
+                    }
                 }
             }
         } catch (IOException e) {
@@ -55,15 +55,18 @@ public class Client_ControlMessage extends Thread {
         }
     }
 
-    public static String getDay(){
-        return Printday;
-    }
-
     // ReadMessageに来たのが履歴だった時の特別な対応
-    public void  show_log(String text){
-        String tmp = text.substring(1, text.length()-1);
+    public void show_log(String text) {
+        String tmp = text.substring(1, text.length() - 1);
         String showmess[] = tmp.split(", ");
-        for(String mess : showmess)
-            System.out.println(mess);
+        for (String mess : showmess) {
+            PrintSplit pslog = new PrintSplit(mess);
+            System.out.print(no + " ");
+            System.out.println(pslog.Printcontent);
+            System.out.println(pslog.Printnewday);
+            no++;
+            content=pslog.Printcontent;
+            day=pslog.Printnewday;
+        }
     }
 }

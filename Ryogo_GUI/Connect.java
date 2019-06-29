@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Connect {
     public Socket soc = null;
-    // private static final int PORT = 19190;
+   // private static final int PORT = 19190;
     public SendThread send;
     public Client_ControlMessage controlMessage;
     public static List<String> chatname = new ArrayList<String>();
