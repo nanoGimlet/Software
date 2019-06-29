@@ -1,3 +1,5 @@
+import org.w3c.dom.Text;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -9,6 +11,10 @@ public class Connect {
     public Client_ControlMessage controlMessage;
     public static List<String> chatname = new ArrayList<String>();
     public static String mychatroom;
+    public static int no;
+    public static String date;
+    public static String text;
+
     public void connect(Socket sct) {
         try {
             soc = sct;
@@ -29,8 +35,12 @@ public class Connect {
             System.out.println(mychatroom);
 
             send = new SendThread(new ReaderWriter(soc), this);
+
             send.start();
             controlMessage = new Client_ControlMessage(soc);
+            no=controlMessage.getNo();
+            date=controlMessage.getDay();
+            text=controlMessage.getContent();
             */
         } catch (IOException e) {
             System.err.println(e);
@@ -45,5 +55,14 @@ public class Connect {
         }
         return false;
     }
-
+/*
+    public static int getNo2(){
+        return no;
+    }
+    public static String getDate2(){
+        return date;
+    }
+    public static String getText2(){
+        return text;
+    }*/
 }

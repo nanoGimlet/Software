@@ -3,9 +3,9 @@ import java.net.*;
 
 public class Client_ControlMessage extends Thread {
     Socket socket;
-    int no = 1;
-    String day;
-    String content;
+    static int no = 1;
+    static String day;
+    static String content;
 
     public Client_ControlMessage(Socket socket) {
         this.socket = socket;
@@ -35,13 +35,14 @@ public class Client_ControlMessage extends Thread {
                     show_log(ReadMessages);
                 } else if(ReadMessages.charAt(0) != '[' && ReadMessages.charAt(1) != ']') {
                     PrintSplit ps = new PrintSplit(ReadMessages);
-                    if (ps.PrintRoom.equals(Connect.mychatroom)) {
+                    if (ps.PrintRoom.equals(/*Connect.mychatroom*/FirstWindowController.mychatroom)) {
                         System.out.print(no + " ");
                         System.out.println(ps.Printcontent);
                         System.out.println(ps.Printnewday);
                         no++;
                         day=ps.Printnewday;
                         content=ps.Printcontent;
+                        System.out.println("CC:Printnewday:"+day+"Printcontent:"+content);
                     }
                 }
             }

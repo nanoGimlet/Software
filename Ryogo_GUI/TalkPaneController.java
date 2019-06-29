@@ -11,7 +11,7 @@ public class TalkPaneController {
 
     @FXML
     void initialize(){
-        dateLabel.setText(Controller.getData());
-        talkLabel.setText(Controller.getText());
+        dateLabel.setText(Controller.getNumber()-1+". "+Controller.getData());
+        talkLabel.setText(Controller.getStrText()); //getText
     }
 }

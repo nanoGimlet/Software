@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirstWindowController">
+<AnchorPane fx:id="escapeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirstWindowController">
    <children>
       <Label layoutX="7.0" layoutY="14.0" prefHeight="17.0" prefWidth="600.0" text="　　　　　10体のチャットスレッドが現れた！^ ^" textAlignment="CENTER">
          <font>
@@ -29,5 +29,6 @@
       <Button fx:id="chatButton9" layoutX="350.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label9" />
       <Button fx:id="chatButton10" layoutX="457.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label10" />
       <Button fx:id="updateButton" layoutX="34.0" layoutY="293.0" mnemonicParsing="false" onAction="#getThema" text="テーマを更新する" />
+      <Button layoutX="485.0" layoutY="293.0" mnemonicParsing="false" onAction="#escape" text="退出する" />
    </children>
 </AnchorPane>

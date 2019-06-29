@@ -25,7 +25,7 @@ class ServerThread extends Thread {
                     ReaderWriter RWserver = new ReaderWriter(socket);
                     String mess = RWserver.in.readLine();
                     Date now = new Date();
-                    String mestime = mess + " " + now;
+                    String mestime = mess + ' ' + now;
                     System.out.println("mess : " + mestime);
                     if (mess == null) {
                         socket.close();
@@ -63,4 +63,6 @@ class ServerThread extends Thread {
             System.err.println(e);
         }
     }
+
+
 }

@@ -51,24 +51,26 @@ public class Controller{
     private Label talkLabel;
 
 
-    static String data;
+    public static String data;
     public static String str;
+    public  static String strText;
     int once=0;
     public SendThread send;
     public Client_ControlMessage controlMessage;
     Connect client;
     Socket socket;
+    static int number;
 
     @FXML
     void initialize() throws Exception {
             ObservableList1 = FXCollections.observableArrayList();
             ListView1.setItems(ObservableList1);
+            label2.setText("                      "+FirstWindowController.mychatroom);
     }
 
     @FXML
     void onButton1Action(ActionEvent event)throws Exception {
         str = textArea.getText();
-        //data="date";
         if (str.length() > 100){
             label1.setText("100文字以内で入力してください．(現在："+str.length()+"文字)");
             label1.setTextFill(Color.RED);
@@ -76,11 +78,17 @@ public class Controller{
         else {
             label1.setText("文字入力してね");
             label1.setTextFill(Color.BLACK);
-            startThread();
-            //str=controlMessage.getContent();
-            //data=controlMessage.getDay();
-            data="date"; //
-            System.out.println(getStr());
+            //startThread();
+            send = new SendThread(new ReaderWriter(portController.commonSocket), client);
+            send.start();
+            send.sleep(100);
+            controlMessage = new Client_ControlMessage(portController.commonSocket);
+            //send.start();
+            send.sleep(200);
+            number=controlMessage.getNo();
+            strText=controlMessage.getContent();
+            data=controlMessage.getDay();
+            System.out.println("@Controller now:"+strText);
             talkPane = FXMLLoader.load(getClass().getResource("talkPane.fxml"));
             ObservableList1.add(talkPane);
             //startThread();
@@ -89,16 +97,11 @@ public class Controller{
     }
     //
     void startThread() throws Exception {
-        if (once == 0) {
-            //String server = InetAddress.getLocalHost().getHostAddress();
-            //InetAddress addr = InetAddress.getByName(server);
-            //socket = new Socket(addr, portController.portnumber);
-            once = 1;
-
-        }
         send = new SendThread(new ReaderWriter(portController.commonSocket), client);
-        controlMessage = new Client_ControlMessage(portController.commonSocket);
         send.start();
+        controlMessage = new Client_ControlMessage(portController.commonSocket);
+        //send.start();
+        send.sleep(1000);
     }
     //
     @FXML
@@ -112,7 +115,16 @@ public class Controller{
         return data;
     }
 
+    public static String getStrText(){
+        return strText;
+    }
+
     public static String getStr(){
         return str;
     }
+
+    public static int getNumber(){
+        return number;
+    }
+
 }

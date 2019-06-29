@@ -28,10 +28,10 @@ class SendThread extends Thread {
                     line += sc1.nextLine();
                 }
                 */
-                line+=Controller.getText();
-                //System.out.println(line);
+                line+=Controller.getStr();
+                System.out.println("ST:"+line);
             System.out.println(line);
-                RWcl.out.println(line);
+            RWcl.out.println(line);
 
         } catch (Exception e) {
             System.err.println(e);

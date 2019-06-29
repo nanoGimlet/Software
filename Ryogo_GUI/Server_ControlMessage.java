@@ -36,7 +36,7 @@ class Server_ControlMessage extends Thread {
                         continue;
                     }
                     Date now = new Date();
-                    String mestime = mess + " " + now;
+                    String mestime = mess + "$!+" + now;
                     //if (ChatServer.list.get(chatroom_name).messlist.size() >= 500) {// 51個目がきたらポップして最新版にする
                     //}
                     ChatServer.list.get(chatroom_name).messlist.add(mestime);// キューにmessの保存
@@ -46,7 +46,7 @@ class Server_ControlMessage extends Thread {
                         threads.remove(this);
                         return;
                     }
-                    mestime =  chatroom_name + '^' + mestime;
+                    mestime =  chatroom_name + "&#^" + mestime;
                     System.out.println(mestime);
                     talk(mestime);
                 } catch (IOException e) {
