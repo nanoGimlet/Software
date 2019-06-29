@@ -23,8 +23,8 @@ public class PrintSplit {
             if (Message.charAt(i) == '&') {
                 if (Message.charAt(i + 1) == '#') {
                     if (Message.charAt(i + 2) == '^') {
-                        PrintRoom = Message.substring(0, i);
-                        Printsub = Message.substring(i + 3, messlen);
+                        PrintRoom = Message.substring(0, i);    // これは部屋の識別用
+                        Printsub = Message.substring(i + 3, messlen);   // これはただのSplit用
                         break;
                     }
                 }
@@ -35,19 +35,19 @@ public class PrintSplit {
             if (Printsub.charAt(j) == '$') {
                 if (Printsub.charAt(j + 1) == '!') {
                     if (Printsub.charAt(j + 2) == '+') {
-                        Printcontent = Printsub.substring(0, j);
-                        Printday = Printsub.substring(j + 3, sublen);
+                        Printcontent = Printsub.substring(0, j);    // これは肝心なメッセージ内容
+                        Printday = Printsub.substring(j + 3, sublen);   // これはただのSplit用
                         break;
                     }
                 }
             }
         }
 
-        Printdate = Printday.substring(0, 3);
-        Printmonth = Printday.substring(4, 7);
-        Printdayno = Printday.substring(8, 10);
-        Printtime = Printday.substring(11, 19);
-        Printyear = Printday.substring(24, 28);
+        Printdate = Printday.substring(0, 3);   // これが曜日
+        Printmonth = Printday.substring(4, 7);  // これが月
+        Printdayno = Printday.substring(8, 10); // これが日付
+        Printtime = Printday.substring(11, 19); // これが時間
+        Printyear = Printday.substring(24, 28); // これが年
 
         switch (Printdate) {
             case "Sun":
@@ -116,7 +116,7 @@ public class PrintSplit {
                 Printmonth = null;
         }
 
-        Printnewday = Printyear + '/' + Printmonth + '/' + Printdayno + '/' + Printdate + " " + Printtime;
+        Printnewday = Printyear + '/' + Printmonth + '/' + Printdayno + '/' + Printdate + " " + Printtime;  // ここは並び替え
 
     }
 
