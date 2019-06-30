@@ -37,11 +37,8 @@ public class portController {
         portTextArea.setText("");
         portnumber = Integer.parseInt(string_portnumber);
         try {
-            showRoomButtonAction();
+            showRoomButtonAction(event);
             chatClient(portnumber);
-            Scene scene = ((Node) event.getSource()).getScene();
-            Window window = scene.getWindow();
-            window.hide();
         } catch (Exception ex) {}
     }
 
@@ -59,23 +56,24 @@ public class portController {
         } catch (IOException e) {}
     }
 
-    void showRoomButtonAction(){
+    void showRoomButtonAction(ActionEvent event){
         if (portnumber == ChatServer.PORT) {
-            portLabel1.setText("                                   　　　　　　           ポート番号を入力してください");
-            portLabel1.setTextFill(Color.BLACK);
             try {
                 AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("app2.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();
+                Scene thisScene = ((Node) event.getSource()).getScene();
+                Window window = thisScene.getWindow();
+                window.hide();
 
             } catch (Exception e) {
                 System.out.println("error");
             }
         }
         else{
-            portLabel1.setText("                                              ポート番号が正しくありません。もう一度入力してください。");
+            portLabel1.setText("IDが正しくありません。もう一度入力してください。");
             portLabel1.setTextFill(Color.RED);
         }
     }
