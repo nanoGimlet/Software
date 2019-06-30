@@ -19,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.stage.Window;
 import javafx.scene.control.ComboBox;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Controller{
     @FXML
@@ -44,28 +46,47 @@ public class Controller{
     @FXML
     private ComboBox<String> mentionBox1;
     @FXML
-    private AnchorPane talkPane;
+    private AnchorPane talkPane,talkPane2;
     @FXML
     private Label dateLabel;
     @FXML
     private Label talkLabel;
 
 
-    public static String data;
+    public static String data,data2;
     public static String str;
-    public  static String strText;
+    public  static String strText,strText2;
     int once=0;
     public SendThread send;
     public Client_ControlMessage controlMessage;
     Connect client;
     Socket socket;
-    static int number;
+    static int number,number2;
 
     @FXML
     void initialize() throws Exception {
-            ObservableList1 = FXCollections.observableArrayList();
-            ListView1.setItems(ObservableList1);
-            label2.setText("                      "+FirstWindowController.mychatroom);
+        ObservableList1 = FXCollections.observableArrayList();
+        ListView1.setItems(ObservableList1);
+        label2.setText("                      "+FirstWindowController.mychatroom);
+        TimerTask task=new TimerTask() {
+            @Override
+            public void run() {
+                runLine();
+            }
+        };
+
+        Timer timer=new Timer();
+        timer.scheduleAtFixedRate(task,10000,10000);
+    }
+
+    void runLine() {
+        try {
+            number2 = controlMessage.getNo();
+            strText2 = controlMessage.getContent();
+            data2 = controlMessage.getDay();
+            talkPane2 = FXMLLoader.load(getClass().getResource("talkPane2.fxml"));
+            ObservableList1.add(talkPane2);
+        }catch(Exception e){}
     }
 
     @FXML
@@ -127,4 +148,15 @@ public class Controller{
         return number;
     }
 
+    static String getData2(){
+        return data2;
+    }
+
+    public static String getStrText2(){
+        return strText2;
+    }
+
+    public static int getNumber2(){
+        return number2;
+    }
 }

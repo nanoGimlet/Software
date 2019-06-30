@@ -48,6 +48,7 @@ public class FirstWindowController {
     public Socket soc = null;
     public SendThread send;
     public Client_ControlMessage controlMessage;
+    public static String log;
     //public static List<String> chatname2 = new ArrayList<String>();
     //public static Socket commonSocket;
 
@@ -69,7 +70,6 @@ public class FirstWindowController {
 
     @FXML
     void onAction(ActionEvent event) throws Exception {
-        chooseChat();
         Button b = (Button) event.getSource();
         roomName = b.getText();
         System.out.println(roomName);
@@ -77,6 +77,7 @@ public class FirstWindowController {
             System.out.println("OK.");
             mychatroom=roomName;
             showChatButtonAction();
+            //Controller.startThread();
         }else {
             System.err.println("not exists");
             System.err.println("Here shows:"+portController.chatname2.toString());
