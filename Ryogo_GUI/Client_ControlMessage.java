@@ -31,7 +31,7 @@ public class Client_ControlMessage extends Thread {
                 ReaderWriter reader = new ReaderWriter(socket);
                 String ReadMessages = reader.in.readLine();
                 System.out.println("CC:"+ReadMessages);
-                if (ReadMessages.charAt(0) == '[' && ReadMessages.charAt(1) != ']') {
+                if (ReadMessages.charAt(0) == '['&& ReadMessages.charAt(1) != ']') {
                     show_log(ReadMessages);
                 } else if(ReadMessages.charAt(0) != '[' && ReadMessages.charAt(1) != ']') {
                     PrintSplit ps = new PrintSplit(ReadMessages);

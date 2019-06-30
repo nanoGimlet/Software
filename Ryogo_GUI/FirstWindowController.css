@@ -1,0 +1,19 @@
+.root {
+-fx-background-color:silver;
+}
+.Label{
+-fx-font-size: 20;
+-fx-text-fill: #006464;
+}
+.chatButton{
+-fx-background-color: #000066;
+-fx-text-fill: white;
+}
+.updateButton{
+-fx-background-color: green;
+-fx-text-fill: white;
+}
+.escapeButton{
+-fx-background-color: #666699;
+-fx-text-fill:red;
+}
