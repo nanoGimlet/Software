@@ -36,7 +36,6 @@ class Server_ControlMessage extends Thread {
                     chatroom_name = sc.next();
                     if(sc.hasNext()){
                     }else{
-                        System.out.println("sunagitune");
                         show_list(socket, chatroom_name);
                         continue;
                     }
