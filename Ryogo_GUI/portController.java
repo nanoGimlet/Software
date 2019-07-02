@@ -22,7 +22,7 @@ public class portController {
     static int portnumber;
     public static Socket commonSocket;
     public static List<String> chatname2 = new ArrayList<String>();
-    static Connect con;
+    public static Connect con;
 
     @FXML
     private TextArea portTextArea;
@@ -33,9 +33,9 @@ public class portController {
 
     @FXML
     void sendPort(ActionEvent event){
-        String string_portnumber = portTextArea.getText();
+        String string_portnumber = portTextArea.getText();  // 19190の番号を取得
         portTextArea.setText("");
-        portnumber = Integer.parseInt(string_portnumber);
+        portnumber = Integer.parseInt(string_portnumber);   // 19190をint型に
         try {
             showRoomButtonAction(event);
             chatClient(portnumber);
@@ -46,13 +46,14 @@ public class portController {
         String server = InetAddress.getLocalHost().getHostAddress();
         System.out.println("PORT:" + PORT);
         Socket socket = null;
+        // ここでサーバーとの通信が始まる
         try {
             InetAddress addr = InetAddress.getByName(server);
             socket = new Socket(addr, PORT);
             commonSocket=socket;
             con = new Connect(); //
             con.connect(socket); //
-            chatname2=con.chatname;
+            chatname2 = con.chatname;
         } catch (IOException e) {}
     }
 

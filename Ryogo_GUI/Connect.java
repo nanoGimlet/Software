@@ -7,7 +7,7 @@ import java.util.*;
 public class Connect {
     public Socket soc = null;
    // private static final int PORT = 19190;
-    public SendThread send;
+    public Client_SendThread send;
     public Client_ControlMessage controlMessage;
     public static List<String> chatname = new ArrayList<String>();
     public static String mychatroom;
@@ -18,38 +18,33 @@ public class Connect {
     public void connect(Socket sct) {
         try {
             soc = sct;
-            ReaderWriter RWclient = new ReaderWriter(soc);
-            RWclient.out.flush();
             System.err.println("*** Connection Success ***");
             ThemaAccept ta = new ThemaAccept(soc);
             ta.join();
             System.out.println("以下のいずれかの部屋名を入力してください");
             System.out.println(chatname.toString());
-            /*
-            mychatroom = FirstWindowController.roomName;
+            // ここの時点で部屋の名前を取得している
+            //  ここまではCUIの挙動
+
+            /*mychatroom = FirstWindowController.roomName;
+
             while (!checkname(mychatroom)) {
                 System.out.println("部屋名が違います。以下の部屋から選択してください。");
                 System.out.println(chatname.toString());
                 mychatroom = FirstWindowController.roomName;
             }
             System.out.println(mychatroom);
-
-            send = new SendThread(new ReaderWriter(soc), this);
-
+            System.out.println("kokokokookoko");
+            send = new Client_SendThread(new ReaderWriter(soc), this);
             send.start();
-            controlMessage = new Client_ControlMessage(soc);
-            no=controlMessage.getNo();
-            date=controlMessage.getDay();
-            text=controlMessage.getContent();
-            */
-        } catch (IOException e) {
-            System.err.println(e);
+            System.out.println("wwwwwwwwwwwwwwww");
+             */
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public boolean checkname(String chat){
+/*    public boolean checkname(String chat){
         for(String name : chatname){
             if(chat.equals(name)) return true;
         }

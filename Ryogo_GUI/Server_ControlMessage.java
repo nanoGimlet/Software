@@ -7,10 +7,14 @@ class Server_ControlMessage extends Thread {
         static List<Server_ControlMessage> threads;
         Socket socket;
         String chatroom_name;
+        public Server_SendThread send;
+
+        public static final int maxsize = 100;
 
 
-    public Server_ControlMessage(Socket sct) {
+    public Server_ControlMessage(Socket sct, Server_SendThread send) {
         super();
+        // this.send = send;
         socket = sct;
         if (threads == null) {
             threads = new ArrayList<Server_ControlMessage>();
@@ -25,30 +29,37 @@ class Server_ControlMessage extends Thread {
             System.err.println("*** Connected ***");
             while (true) {
                 try {
+                    // ここにすでに時間が持たされたものが飛んでくる
+                    System.out.println("こいつが2か所表示されてればおっけ");
                     ReaderWriter RWserver = new ReaderWriter(socket);
                     String mess = RWserver.in.readLine();
                     Scanner sc = new Scanner(mess);
                     chatroom_name = sc.next();
                     if(sc.hasNext()){
-                        mess = sc.next();
                     }else{
                         show_list(socket, chatroom_name);
                         continue;
                     }
-                    Date now = new Date();
-                    String mestime = mess + "$!+" + now;
-                    //if (ChatServer.list.get(chatroom_name).messlist.size() >= 500) {// 51個目がきたらポップして最新版にする
-                    //}
-                    ChatServer.list.get(chatroom_name).messlist.add(mestime);// キューにmessの保存
-                    System.out.println("mess : " + mestime);
+
+                    System.out.println("mess : " + mess);
                     if (mess == null) {
                         socket.close();
                         threads.remove(this);
                         return;
                     }
-                    mestime =  chatroom_name + "&#^" + mestime;
-                    System.out.println(mestime);
-                    talk(mestime);
+
+                    PrintSplit ps = new PrintSplit(mess);
+                    chatroom_name = ps.PrintRoom;
+                    if(ChatServer.list.get(chatroom_name).messlist.size() >= maxsize) {
+                        System.out.println("容量の上限に達しました。");
+                        send.PutName(chatroom_name);
+                        String message = "err投稿数が" + maxsize + "件を超えました。";
+                        PrintSplit ps2 = new PrintSplit(chatroom_name, message, ps.Printday);
+                        talk(ps2.Sendform());
+                    }else {
+                        ChatServer.list.get(chatroom_name).messlist.add(mess);
+                        talk(mess);
+                    }
                 } catch (IOException e) {
                     System.err.println("*** Connection closed ***");
                     socket.close();
@@ -66,6 +77,7 @@ class Server_ControlMessage extends Thread {
         try {
             ReaderWriter out_message = new ReaderWriter(socket);
             out_message.out.println(ChatServer.list.get(chatroom_name).messlist.toString());
+            out_message.out.flush();
         } catch (Exception e) {
 
         }

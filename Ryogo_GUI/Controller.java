@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -19,10 +20,12 @@ import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.stage.Window;
 import javafx.scene.control.ComboBox;
+
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
-public class Controller{
+public class Controller {
     @FXML
     private VBox VBox1;
     @FXML
@@ -42,121 +45,151 @@ public class Controller{
     @FXML
     private ListView<AnchorPane> ListView1;
     @FXML
-    private ObservableList<AnchorPane> ObservableList1;
+    public static ObservableList<AnchorPane> ObservableList1;
     @FXML
-    private ComboBox<String> mentionBox1;
+    public static AnchorPane talkPane;
     @FXML
-    private AnchorPane talkPane,talkPane2;
+    private AnchorPane talkPane2;
     @FXML
     private Label dateLabel;
     @FXML
     private Label talkLabel;
+    @FXML
+    private TextArea mentionArea;
 
 
-    public static String data,data2;
+    public static String data, data2;
     public static String str;
-    public  static String strText,strText2;
-    int once=0;
-    public SendThread send;
-    public Client_ControlMessage controlMessage;
-    Connect client;
-    Socket socket;
-    static int number,number2;
+    public static String strText, strText2;
+    public static String mess;
+    public Client_SendThread send;
+    public static Client_ControlMessage controlMessage;
+    Connect client = portController.con;
+    Socket socket = portController.commonSocket;
+    public static int number, number2;
+    public static String mychatroom = FirstWindowController.roomName;
+    public String tmp;
+    public static int count ;
+    public static String mention;
 
     @FXML
     void initialize() throws Exception {
         ObservableList1 = FXCollections.observableArrayList();
         ListView1.setItems(ObservableList1);
-        label2.setText("                      "+FirstWindowController.mychatroom);
-        TimerTask task=new TimerTask() {
-            @Override
-            public void run() {
-                runLine();
-            }
-        };
-
-        Timer timer=new Timer();
-        timer.scheduleAtFixedRate(task,10000,10000);
-    }
-
-    void runLine() {
-        try {
-            number2 = controlMessage.getNo();
-            strText2 = controlMessage.getContent();
-            data2 = controlMessage.getDay();
-            talkPane2 = FXMLLoader.load(getClass().getResource("talkPane2.fxml"));
-            ObservableList1.add(talkPane2);
-        }catch(Exception e){}
+        label2.setText(FirstWindowController.roomName);
     }
 
     @FXML
-    void onButton1Action(ActionEvent event)throws Exception {
+    void startAction(ActionEvent event) throws Exception {
+        startThread();
+        label1.setText("文字入力してね");
+        label1.setTextFill(Color.BLACK);
+    }
+
+    @FXML
+    void mentionAction(ActionEvent event){
+        mention=mentionArea.getText();
+        textArea.setText(">>"+mention+"　");
+        mentionArea.setText("");
+    }
+
+    @FXML
+    void onButton1Action(ActionEvent event) throws Exception {
+        mess = null;
+        str = null;
         str = textArea.getText();
-        if (str.length() > 100){
-            label1.setText("100文字以内で入力してください．(現在："+str.length()+"文字)");
+        if (str.length() > 100) {
+            label1.setText("100文字以内で入力してください．(現在：" + str.length() + "文字)");
             label1.setTextFill(Color.RED);
-        }
-        else {
+        } else if(str.length() == 0) {
+            label1.setText("入力がありません");
+            label1.setTextFill(Color.RED);
+        }else {
+            if (str != null) {
+                mess = str;
+                new Client_SendThread(new ReaderWriter(socket), client).start();
+            }
             label1.setText("文字入力してね");
             label1.setTextFill(Color.BLACK);
-            //startThread();
-            send = new SendThread(new ReaderWriter(portController.commonSocket), client);
-            send.start();
-            send.sleep(100);
-            controlMessage = new Client_ControlMessage(portController.commonSocket);
-            //send.start();
-            send.sleep(200);
-            number=controlMessage.getNo();
-            strText=controlMessage.getContent();
-            data=controlMessage.getDay();
-            System.out.println("@Controller now:"+strText);
-            talkPane = FXMLLoader.load(getClass().getResource("talkPane.fxml"));
-            ObservableList1.add(talkPane);
-            //startThread();
             textArea.setText("");
         }
     }
+
     //
     void startThread() throws Exception {
-        send = new SendThread(new ReaderWriter(portController.commonSocket), client);
-        send.start();
-        controlMessage = new Client_ControlMessage(portController.commonSocket);
-        //send.start();
-        send.sleep(1000);
+        ReaderWriter RWroom = new ReaderWriter(socket);
+        RWroom.out.println(mychatroom + " ");
+        RWroom.out.flush();
+        controlMessage = new Client_ControlMessage(socket, client);    // クライアントの文字列の受け取り体制ができる
+        System.out.println("走らせますよエンテイさん");
+        count = 1;
+        while (true) {
+            System.out.println(controlMessage.getLog());
+            if (controlMessage.getLog() != null) {
+                String len = controlMessage.getLog();
+                if (len.charAt(0) == '[' && len.charAt(1) == ']') {
+                    number2 = 1;
+                    Client_ControlMessage.flag = 1;
+                    break;
+                } else {
+                    // ここでコントローラ迫真の処理
+                    tmp = len.substring(1, len.length() - 1);
+                    String showmess[] = tmp.split(", ");
+                    for (String mess : showmess) {
+                        PrintSplit pslog = new PrintSplit(mess);
+                        count++;
+                        number = count;
+                        strText = pslog.Printcontent;
+                        data = pslog.Printnewday;
+                        talkPane = FXMLLoader.load(getClass().getResource("talkPane.fxml"));
+                        ObservableList1.add(talkPane);
+                        TimeUnit.MILLISECONDS.sleep(100);
+                        System.out.println("flagは:" + Client_ControlMessage.flag);
+                    }
+                    number2 = number;
+                    System.out.println(number2);
+                    Client_ControlMessage.flag = 1;
+                    break;
+                }
+            }
+        }
+        System.out.println(number2);
     }
+
     //
     @FXML
-    void onCloseAction(ActionEvent event){
-        Scene scene=((Node)event.getSource()).getScene();
-        Window window=scene.getWindow();
+    void onCloseAction(ActionEvent event) {
+        Client_ControlMessage.flag = 0;
+        Scene scene = ((Node) event.getSource()).getScene();
+        Window window = scene.getWindow();
         window.hide();
     }
 
-    static String getData(){
+    static String getData() {
         return data;
     }
 
-    public static String getStrText(){
+    public static String getStrText() {
         return strText;
     }
 
-    public static String getStr(){
+    public static String getStr() {
         return str;
     }
 
-    public static int getNumber(){
+    public static int getNumber() {
         return number;
     }
 
-    static String getData2(){
+    static String getData2() {
         return data2;
     }
 
-    public static String getStrText2(){
+    public static String getStrText2() {
         return strText2;
     }
 
-    public static int getNumber2(){
+    public static int getNumber2() {
         return number2;
     }
 }

@@ -3,6 +3,7 @@ import java.net.Socket;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+import javax.naming.ldap.Control;
 import javax.naming.ldap.SortKey;
 
 public class FirstWindowController {
@@ -45,14 +47,14 @@ public class FirstWindowController {
 
     static String roomName;
     static String mychatroom;
-    public Socket soc = null;
-    public SendThread send;
+    public Socket soc = portController.commonSocket;
+    public Connect client = portController.con;
     public Client_ControlMessage controlMessage;
-    public static String log;
+    public RoomsendThread rs;
     //public static List<String> chatname2 = new ArrayList<String>();
     //public static Socket commonSocket;
 
-    int once=0;
+    /*int once=0;
 
     void chooseChat() throws Exception {
         //String server = InetAddress.getLocalHost().getHostAddress();
@@ -68,14 +70,15 @@ public class FirstWindowController {
         } catch (Exception e) {}
     }
 
+     */
+
     @FXML
     void onAction(ActionEvent event) throws Exception {
         Button b = (Button) event.getSource();
         roomName = b.getText();
         System.out.println(roomName);
         if(checkname(roomName)) {
-            System.out.println("OK.");
-            mychatroom=roomName;
+            System.out.println(roomName);
             showChatButtonAction();
             //Controller.startThread();
         }else {

@@ -23,5 +23,6 @@ public class ThemaCreate extends Thread {
             e.printStackTrace();
         }
         RWSthema.out.println(ChatServer.chatroom_name.toString());
+        RWSthema.out.flush();
     }
 }

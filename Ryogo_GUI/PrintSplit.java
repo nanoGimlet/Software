@@ -13,34 +13,51 @@ public class PrintSplit {
     int messlen;
     int sublen;
 
+    public PrintSplit(String roomname, String mess, String date ){//クライアントからメッセージを送る形式を合わせるための下準備
+        PrintRoom=roomname;
+        Printcontent=mess;
+        Printday=date;
+
+    }
+
+    public String Sendform(){//形式合わせる
+        return PrintRoom+"&#^"+Printcontent+"$!+"+Printday;
+    }
+
     public PrintSplit(String mess) {
-        Message = mess;
-        messlen = Message.length();
-        for (int i = 0; i < messlen; i++) {
-            if (Message.charAt(i) == '&') {
-                if (Message.charAt(i + 1) == '#') {
-                    if (Message.charAt(i + 2) == '^') {
-                        PrintRoom = Message.substring(0, i);    // これは部屋の識別用
-                        Printsub = Message.substring(i + 3, messlen);   // これはただのSplit用
-                        System.out.println("Printsub:"+Printsub+" PrintRoom:"+PrintRoom);
-                        break;
-                    }
-                }
-            }
-        }
-        sublen = Printsub.length();
-        for (int j = 0; j < sublen; j++) {
-            if (Printsub.charAt(j) == '$') {
-                if (Printsub.charAt(j + 1) == '!') {
-                    if (Printsub.charAt(j + 2) == '+') {
-                        Printcontent = Printsub.substring(0, j);    // これは肝心なメッセージ内容
-                        Printday = Printsub.substring(j + 3, sublen);   // これはただのSplit用
-                        System.out.println("Printcontent:"+Printcontent);
-                        break;
-                    }
-                }
-            }
-        }
+        String tmp[] = mess.split("[&#^]");
+        //for(String t : tmp )System.out.println(t);
+        String tmp2[] = tmp[3].split("[$!+]");
+
+        PrintRoom = tmp[0];
+        Printcontent = tmp2[0];
+        Printday = tmp2[3];
+
+        // Message = mess;
+        // messlen = Message.length(); 
+        // //for (int i = 0; i < messlen; i++) {
+        //     if (Message.charAt(i) == '&') {
+        //         if (Message.charAt(i + 1) == '#') {
+        //             if (Message.charAt(i + 2) == '^') {
+        //                 PrintRoom = Message.substring(0, i);    // これは部屋の識別用
+        //                 Printsub = Message.substring(i + 3, messlen);   // これはただのSplit用
+        //                 break;
+        //             }
+        //         }
+        //     }
+        // }
+        // sublen = Printsub.length();
+        // for (int j = 0; j < sublen; j++) {
+        //     if (Printsub.charAt(j) == '$') {
+        //         if (Printsub.charAt(j + 1) == '!') {
+        //             if (Printsub.charAt(j + 2) == '+') {
+        //                 Printcontent = Printsub.substring(0, j);    // これは肝心なメッセージ内容
+        //                 Printday = Printsub.substring(j + 3, sublen);   // これはただのSplit用
+        //                 break;
+        //             }
+        //         }
+        //     }
+        // }
 
         Printdate = Printday.substring(0, 3);   // これが曜日
         Printmonth = Printday.substring(4, 7);  // これが月

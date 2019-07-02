@@ -6,29 +6,29 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="escapeButton" stylesheets="FirstWindowController.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirstWindowController">
+<AnchorPane id="F_anchorpane" fx:id="escapeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="347.0" prefWidth="600.0" styleClass="F_anchorpane" stylesheets="@FirstWindowController.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirstWindowController">
    <children>
-      <Label layoutX="7.0" layoutY="14.0" prefHeight="17.0" prefWidth="600.0" text="　　　　　10体のチャットスレッドが現れた！^ ^" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="14.0" prefHeight="17.0" prefWidth="600.0" text="10体のチャットスレッドが現れた！^ ^" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="66.0" prefHeight="17.0" prefWidth="584.0" text=" 　　　　　　　　　    どのチャット入ろうか？">
+      <Label alignment="CENTER" layoutX="14.0" layoutY="66.0" prefHeight="17.0" prefWidth="584.0" text="どのチャット入ろうか？">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="chatButton1" id="chatButton" layoutX="34.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label1" />
-      <Button fx:id="chatButton2" id="chatButton" layoutX="139.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label2" />
-      <Button fx:id="chatButton3" id="chatButton" layoutX="244.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label3" />
-      <Button fx:id="chatButton4" id="chatButton" layoutX="350.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label4" />
-      <Button fx:id="chatButton5" id="chatButton" layoutX="457.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label5" />
-      <Button fx:id="chatButton6" id="chatButton" layoutX="34.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label6" />
-      <Button fx:id="chatButton7" id="chatButton" layoutX="139.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label7" />
-      <Button fx:id="chatButton8" id="chatButton" layoutX="244.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label8" />
-      <Button fx:id="chatButton9" id="chatButton" layoutX="350.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label9" />
-      <Button fx:id="chatButton10" id="chatButton" layoutX="457.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" text="label10" />
-      <Button fx:id="updateButton" id="updateButton" layoutX="34.0" layoutY="293.0" mnemonicParsing="false" onAction="#getThema" text="テーマを更新する" />
-      <Button id="escapeButton" layoutX="485.0" layoutY="293.0" mnemonicParsing="false" onAction="#escape" text="退出する" />
+      <Button id="chatButton" fx:id="chatButton1" layoutX="34.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label1" />
+      <Button id="chatButton" fx:id="chatButton2" layoutX="139.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label2" />
+      <Button id="chatButton" fx:id="chatButton3" layoutX="244.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label3" />
+      <Button id="chatButton" fx:id="chatButton4" layoutX="350.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label4" />
+      <Button id="chatButton" fx:id="chatButton5" layoutX="457.0" layoutY="119.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label5" />
+      <Button id="chatButton" fx:id="chatButton6" layoutX="34.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label6" />
+      <Button id="chatButton" fx:id="chatButton7" layoutX="139.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label7" />
+      <Button id="chatButton" fx:id="chatButton8" layoutX="244.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label8" />
+      <Button id="chatButton" fx:id="chatButton9" layoutX="350.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label9" />
+      <Button id="chatButton" fx:id="chatButton10" layoutX="457.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="87.0" styleClass="chatButton" text="label10" />
+      <Button id="updateButton" fx:id="updateButton" layoutX="34.0" layoutY="293.0" mnemonicParsing="false" onAction="#getThema" styleClass="updateButton" text="テーマを更新する" />
+      <Button id="escapeButton" layoutX="485.0" layoutY="293.0" mnemonicParsing="false" onAction="#escape" styleClass="escapeButton" text="退出する" />
    </children>
 </AnchorPane>

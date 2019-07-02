@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -8,10 +9,13 @@
 
 <AnchorPane prefHeight="73.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TalkPaneController">
    <children>
-      <AnchorPane layoutX="65.0" layoutY="3.0" prefHeight="67.0" prefWidth="452.0">
+      <AnchorPane layoutX="1.0" layoutY="3.0" prefHeight="67.0" prefWidth="600.0">
          <children>
-            <Label fx:id="dateLabel" layoutX="2.0" layoutY="6.0" prefHeight="17.0" prefWidth="450.0" />
-            <Label fx:id="talkLabel" layoutX="2.0" layoutY="23.0" prefHeight="17.0" prefWidth="450.0" />
+            <Label fx:id="dateLabel" layoutX="2.0" layoutY="6.0" prefHeight="17.0" prefWidth="600.0" />
+            <Label fx:id="talkLabel" layoutX="2.0" layoutY="23.0" prefHeight="45.0" prefWidth="600.0" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </children>
