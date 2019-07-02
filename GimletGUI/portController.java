@@ -54,9 +54,6 @@ public class portController {
             con = new Connect(); //
             con.connect(socket); //
             chatname2 = con.chatname;
-            for(int i = 0; i < chatname2.size(); i++) {
-                System.out.println(chatname2.get(i));
-            }
         } catch (IOException e) {}
     }
 

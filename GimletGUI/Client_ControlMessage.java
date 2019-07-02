@@ -64,7 +64,7 @@ public class Client_ControlMessage extends Thread {
                 String ReadMessages = reader.in.readLine();
                 System.out.println("送られてきたよ");
                 System.out.println(ReadMessages);
-                if (ReadMessages.charAt(0) == '[' && ReadMessages.charAt(1) != ']') {
+                if (ReadMessages.charAt(0) == '[') {
                     System.out.println("履歴だあ");
                     show_log(ReadMessages);
                 } else if (ReadMessages.charAt(0) != '[' && ReadMessages.charAt(1) != ']') {

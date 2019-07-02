@@ -97,6 +97,7 @@ public class Controller {
             number = controlMessage.getNo();
             strText = controlMessage.getContent();
             data = controlMessage.getDay();
+            System.out.println("おれ動いてないよね");
             System.out.println(number);
             System.out.println(strText);
             System.out.println(data);
@@ -123,9 +124,11 @@ public class Controller {
                 if (len.charAt(0) == '[' && len.charAt(1) == ']') {
                     break;
                 } else {
+                    System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                     tmp = len.substring(1, len.length() - 1);
                     String showmess[] = tmp.split(", ");
                     for (String mess : showmess) {
+                        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
                         PrintSplit pslog = new PrintSplit(mess);
                         System.out.print(count + " ");
                         System.out.println(pslog.Printcontent);
@@ -136,6 +139,7 @@ public class Controller {
                         data = pslog.Printnewday;
                         talkPane = FXMLLoader.load(getClass().getResource("talkPane.fxml"));
                         ObservableList1.add(talkPane);
+
                     }
                     break;
                 }

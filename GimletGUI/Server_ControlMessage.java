@@ -30,12 +30,14 @@ class Server_ControlMessage extends Thread {
             while (true) {
                 try {
                     // ここにすでに時間が持たされたものが飛んでくる
+                    System.out.println("こいつが2か所表示されてればおっけ");
                     ReaderWriter RWserver = new ReaderWriter(socket);
                     String mess = RWserver.in.readLine();
                     Scanner sc = new Scanner(mess);
                     chatroom_name = sc.next();
                     if(sc.hasNext()){
                     }else{
+                        System.out.println(chatroom_name);
                         show_list(socket, chatroom_name);
                         continue;
                     }
@@ -76,6 +78,10 @@ class Server_ControlMessage extends Thread {
         try {
             ReaderWriter out_message = new ReaderWriter(socket);
             System.out.println(ChatServer.list.get(chatroom_name).messlist.toString());
+            String mesa = ChatServer.list.get(chatroom_name).messlist.toString();
+            if(mesa.charAt(0) == '[' && mesa.charAt(1) == ']') {
+                System.out.println("送ったよ");
+            }
             out_message.out.println(ChatServer.list.get(chatroom_name).messlist.toString());
             out_message.out.flush();
         } catch (Exception e) {
