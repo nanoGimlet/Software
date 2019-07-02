@@ -1,0 +1,14 @@
+.root {
+-fx-background-color:silver;
+}
+.idLabel {
+-fx-font-size: 20;
+}
+.welcomeLabel{
+-fx-font-size:46;
+-fx-text-fill:#006464;
+}
+.button{
+-fx-background-color: black;
+-fx-text-fill:white;
+}
