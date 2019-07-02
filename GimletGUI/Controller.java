@@ -91,7 +91,10 @@ public class Controller {
         if (str.length() > 100) {
             label1.setText("100文字以内で入力してください．(現在：" + str.length() + "文字)");
             label1.setTextFill(Color.RED);
-        } else {
+        } else if(str.length() == 0) {
+            label1.setText("入力がありません");
+            label1.setTextFill(Color.RED);
+        }else {
             if (str != null) {
                 mess = str;
                 new Client_SendThread(new ReaderWriter(socket), client).start();
