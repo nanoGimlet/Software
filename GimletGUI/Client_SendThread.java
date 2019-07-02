@@ -20,7 +20,6 @@ class Client_SendThread extends Thread {
             // while (true) {
                 System.out.println("∞");
                 line = Controller.mess;
-                System.out.println(line);
                 if(line == null) {
                 }else {
                     System.out.println(line);
@@ -28,8 +27,6 @@ class Client_SendThread extends Thread {
                     String date2 = date.toString();
                     PrintSplit sendmessage = new PrintSplit(mychatroom, line, date2);
                     String send = sendmessage.Sendform();
-                    System.out.println(send);
-                    System.out.println(send);
                     RWcl.out.println(send);
                     RWcl.out.flush();
                 }

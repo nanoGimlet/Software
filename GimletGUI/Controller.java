@@ -23,6 +23,7 @@ import javafx.scene.control.ComboBox;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class Controller {
     @FXML
@@ -65,9 +66,10 @@ public class Controller {
     public Client_ControlMessage controlMessage;
     Connect client = portController.con;
     Socket socket = portController.commonSocket;
-    static int number, number2;
+    public static int number, number2;
     public static String mychatroom = FirstWindowController.roomName;
     public String tmp;
+    public static int count ;
 
     @FXML
     void initialize() throws Exception {
@@ -94,15 +96,6 @@ public class Controller {
                 mess = str;
                 new Client_SendThread(new ReaderWriter(socket), client).start();
             }
-            number = controlMessage.getNo();
-            strText = controlMessage.getContent();
-            data = controlMessage.getDay();
-            System.out.println("おれ動いてないよね");
-            System.out.println(number);
-            System.out.println(strText);
-            System.out.println(data);
-            talkPane = FXMLLoader.load(getClass().getResource("talkPane.fxml"));
-            ObservableList1.add(talkPane);
             label1.setText("文字入力してね");
             label1.setTextFill(Color.BLACK);
             textArea.setText("");
@@ -116,41 +109,38 @@ public class Controller {
         RWroom.out.flush();
         controlMessage = new Client_ControlMessage(socket, client);    // クライアントの文字列の受け取り体制ができる
         System.out.println("走らせますよエンテイさん");
+        count = 1;
         while (true) {
             System.out.println(controlMessage.getLog());
             if (controlMessage.getLog() != null) {
-                int count = 1;
                 String len = controlMessage.getLog();
                 if (len.charAt(0) == '[' && len.charAt(1) == ']') {
+                    number2 = 1;
+                    Client_ControlMessage.flag = 1;
                     break;
                 } else {
-                    System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    // ここでコントローラ迫真の処理
                     tmp = len.substring(1, len.length() - 1);
                     String showmess[] = tmp.split(", ");
                     for (String mess : showmess) {
-                        System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
                         PrintSplit pslog = new PrintSplit(mess);
-                        System.out.print(count + " ");
-                        System.out.println(pslog.Printcontent);
-                        System.out.println(pslog.Printnewday);
                         count++;
                         number = count;
                         strText = pslog.Printcontent;
                         data = pslog.Printnewday;
                         talkPane = FXMLLoader.load(getClass().getResource("talkPane.fxml"));
                         ObservableList1.add(talkPane);
-
+                        TimeUnit.MILLISECONDS.sleep(100);
+                        System.out.println("flagは:" + Client_ControlMessage.flag);
                     }
+                    number2 = number;
+                    System.out.println(number2);
+                    Client_ControlMessage.flag = 1;
                     break;
                 }
             }
         }
-        // 部屋の名前をまず送る
-        /*System.out.println(mychatroom);
-        ReaderWriter RSroom = new ReaderWriter(socket);
-        RSroom.out.println(mychatroom + " ");
-        RSroom.out.flush();
-         */
+        System.out.println(number2);
     }
 
     //
