@@ -20,7 +20,9 @@ import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.stage.Window;
 import javafx.scene.control.ComboBox;
+import javafx .scene.control.TextField;
 
+import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -47,6 +49,8 @@ public class Controller {
     @FXML
     public static ObservableList<AnchorPane> ObservableList1;
     @FXML
+    private ComboBox<String> mentionBox1;
+    @FXML
     public static AnchorPane talkPane;
     @FXML
     private AnchorPane talkPane2;
@@ -55,21 +59,23 @@ public class Controller {
     @FXML
     private Label talkLabel;
     @FXML
-    private TextArea mentionArea;
+    private Button startButton;
+    @FXML
+    private Button sendButton;
+    @FXML
+    private TextField mentionField;
 
 
-    public static String data, data2;
+    public static String data;
     public static String str;
-    public static String strText, strText2;
+    public static String strText;
     public static String mess;
-    public Client_SendThread send;
     public static Client_ControlMessage controlMessage;
     Connect client = portController.con;
     Socket socket = portController.commonSocket;
     public static int number, number2;
     public static String mychatroom = FirstWindowController.roomName;
     public String tmp;
-    public static int count ;
     public static String mention;
 
     @FXML
@@ -77,20 +83,24 @@ public class Controller {
         ObservableList1 = FXCollections.observableArrayList();
         ListView1.setItems(ObservableList1);
         label2.setText(FirstWindowController.roomName);
+        sendButton.setDisable(true);
+
     }
 
     @FXML
     void startAction(ActionEvent event) throws Exception {
         startThread();
+        startButton.setDisable(true);
+        sendButton.setDisable(false);
         label1.setText("文字入力してね");
         label1.setTextFill(Color.BLACK);
     }
 
     @FXML
-    void mentionAction(ActionEvent event){
-        mention=mentionArea.getText();
-        textArea.setText(">>"+mention+"　");
-        mentionArea.setText("");
+    void mentionAction(ActionEvent event) {
+        mention = mentionField.getText();
+        textArea.setText(">>" + mention + "　");
+        mentionField.setText("");
     }
 
     @FXML
@@ -117,12 +127,13 @@ public class Controller {
 
     //
     void startThread() throws Exception {
+        mychatroom = FirstWindowController.roomName;
         ReaderWriter RWroom = new ReaderWriter(socket);
         RWroom.out.println(mychatroom + " ");
         RWroom.out.flush();
-        controlMessage = new Client_ControlMessage(socket, client);    // クライアントの文字列の受け取り体制ができる
+        TimeUnit.MILLISECONDS.sleep(200);
         System.out.println("走らせますよエンテイさん");
-        count = 1;
+        controlMessage = new Client_ControlMessage(socket, client);    // クライアントの文字列の受け取り体制ができる
         while (true) {
             System.out.println(controlMessage.getLog());
             if (controlMessage.getLog() != null) {
@@ -137,14 +148,12 @@ public class Controller {
                     String showmess[] = tmp.split(", ");
                     for (String mess : showmess) {
                         PrintSplit pslog = new PrintSplit(mess);
-                        count++;
-                        number = count;
+                        number = pslog.PrintNo;
                         strText = pslog.Printcontent;
                         data = pslog.Printnewday;
                         talkPane = FXMLLoader.load(getClass().getResource("talkPane.fxml"));
                         ObservableList1.add(talkPane);
-                        TimeUnit.MILLISECONDS.sleep(100);
-                        System.out.println("flagは:" + Client_ControlMessage.flag);
+                        TimeUnit.MILLISECONDS.sleep(100);   // これは必要なsleep
                     }
                     number2 = number;
                     System.out.println(number2);
@@ -159,7 +168,8 @@ public class Controller {
     //
     @FXML
     void onCloseAction(ActionEvent event) {
-        Client_ControlMessage.flag = 0;
+        controlMessage.flag = 0;
+        // controlMessage.stopRunning();
         Scene scene = ((Node) event.getSource()).getScene();
         Window window = scene.getWindow();
         window.hide();
@@ -173,23 +183,8 @@ public class Controller {
         return strText;
     }
 
-    public static String getStr() {
-        return str;
-    }
-
     public static int getNumber() {
         return number;
     }
 
-    static String getData2() {
-        return data2;
-    }
-
-    public static String getStrText2() {
-        return strText2;
-    }
-
-    public static int getNumber2() {
-        return number2;
-    }
 }

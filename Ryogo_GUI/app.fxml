@@ -18,12 +18,11 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <ListView fx:id="ListView1" layoutY="40.0" prefHeight="368.0" prefWidth="634.0" styleClass="listbox" />
+      <ListView fx:id="ListView1" layoutY="40.0" prefHeight="381.0" prefWidth="634.0" styleClass="listbox" />
       <Button fx:id="closeButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseAction" text="退出" />
-      <Button layoutX="538.0" layoutY="448.0" mnemonicParsing="false" onAction="#onButton1Action" prefHeight="55.0" prefWidth="85.0" text="送信" />
+      <Button fx:id="sendButton" layoutX="538.0" layoutY="448.0" mnemonicParsing="false" onAction="#onButton1Action" prefHeight="55.0" prefWidth="85.0" text="送信" />
       <Button fx:id="startButton" layoutX="511.0" layoutY="10.0" mnemonicParsing="false" onAction="#startAction" prefHeight="25.0" prefWidth="106.0" styleClass="startButton" text="スレッド起動" />
-      <TextArea fx:id="mentionArea" layoutX="8.0" layoutY="448.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="15.0" prefWidth="75.0" promptText="メンション先" />
-      <Label fx:id="label1" layoutX="77.0" layoutY="408.0" prefHeight="4.0" prefWidth="505.0" text="スレッドを起動してください">
+      <Label fx:id="label1" layoutX="78.0" layoutY="419.0" prefHeight="4.0" prefWidth="505.0" text="スレッドを起動してください">
          <padding>
             <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
          </padding>
@@ -32,6 +31,7 @@
          </font>
       </Label>
       <TextArea fx:id="textArea" layoutX="88.0" layoutY="448.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="55.0" prefWidth="445.0" wrapText="true" />
-      <Button fx:id="mentionButton" layoutX="16.0" layoutY="488.0" mnemonicParsing="false" onAction="#mentionAction" text="メンション" />
+      <Button fx:id="mentionButton" layoutX="18.0" layoutY="477.0" mnemonicParsing="false" onAction="#mentionAction" prefHeight="29.0" prefWidth="60.0" text="メンション" />
+      <TextField fx:id="mentionField" layoutX="14.0" layoutY="448.0" onAction="#mentionAction" prefHeight="25.0" prefWidth="67.0" />
    </children>
 </AnchorPane>

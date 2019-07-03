@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,10 +10,8 @@
 
 <AnchorPane prefHeight="290.0" prefWidth="421.0" stylesheets="@PortConnect.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="portController">
    <children>
-      <AnchorPane layoutX="8.0" layoutY="24.0" prefHeight="239.0" prefWidth="413.0">
+      <AnchorPane layoutX="8.0" layoutY="24.0" prefHeight="200.0" prefWidth="413.0">
          <children>
-            <TextArea fx:id="portTextArea" layoutX="68.0" layoutY="102.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="259.0" />
-            <Button fx:id="portButton" layoutX="171.0" layoutY="168.0" mnemonicParsing="false" onAction="#sendPort" text="確認" />
             <Label id="idLabel" fx:id="portLabel1" alignment="CENTER" layoutY="45.0" prefHeight="42.0" prefWidth="413.0" styleClass="idLabel" text="IDを入力してください" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
@@ -22,7 +21,13 @@
                   <Font size="46.0" />
                </font>
             </Label>
+            <TextField fx:id="portTextField" layoutX="92.0" layoutY="100.0" prefHeight="91.0" prefWidth="216.0">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
+      <Button fx:id="portButton" layoutX="185.0" layoutY="248.0" mnemonicParsing="false" onAction="#sendPort" text="確認" />
    </children>
 </AnchorPane>

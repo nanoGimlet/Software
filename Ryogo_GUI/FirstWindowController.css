@@ -1,14 +1,14 @@
 .F_anchorpane{
--fx-background-image:url('water.jpg');
+-fx-background-image:url('water.jpeg');
 }
 .Label{
 -fx-font-size: 20;
 -fx-text-fill: #006464;
 }
 .chatButton{
--fx-background-color: #00CC00;
--fx-text-fill: white;
--fx-effect:dropshadow(one-pass-box,green,8,0.0,2,0);
+-fx-background-color: #;
+-fx-text-fill: black;
+-fx-effect:dropshadow(one-pass-box,gray,8,0.0,2,0);
 }
 .updateButton{
 -fx-background-color: #666666;
