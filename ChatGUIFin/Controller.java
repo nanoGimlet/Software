@@ -65,7 +65,7 @@ public class Controller {
     public static String str;
     public static String strText;
     public static String mess;
-    public Client_ControlMessage controlMessage;
+    public static Client_ControlMessage controlMessage;
     Connect client = portController.con;
     Socket socket = portController.commonSocket;
     public static int number, number2;
@@ -77,7 +77,7 @@ public class Controller {
     void initialize() throws Exception {
         ObservableList1 = FXCollections.observableArrayList();
         ListView1.setItems(ObservableList1);
-        label2.setText("                      " + FirstWindowController.roomName);
+        label2.setText(FirstWindowController.roomName);
     }
 
     @FXML
