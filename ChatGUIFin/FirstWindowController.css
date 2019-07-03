@@ -1,19 +1,20 @@
-.root {
--fx-background-color:silver;
+.F_anchorpane{
+-fx-background-image:url('water.jpeg');
 }
 .Label{
 -fx-font-size: 20;
 -fx-text-fill: #006464;
 }
 .chatButton{
--fx-background-color: #000066;
+-fx-background-color: #00CC00;
 -fx-text-fill: white;
+-fx-effect:dropshadow(one-pass-box,green,8,0.0,2,0);
 }
 .updateButton{
--fx-background-color: green;
+-fx-background-color: #666666;
 -fx-text-fill: white;
 }
 .escapeButton{
--fx-background-color: #666699;
--fx-text-fill:red;
+-fx-background-color: black;
+-fx-text-fill:white;
 }

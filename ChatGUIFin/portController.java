@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -25,7 +25,7 @@ public class portController {
     public static Connect con;
 
     @FXML
-    private TextArea portTextArea;
+    private TextField portTextField;
     @FXML
     private Label portLabel1;
     @FXML
@@ -33,8 +33,8 @@ public class portController {
 
     @FXML
     void sendPort(ActionEvent event){
-        String string_portnumber = portTextArea.getText();  // 19190の番号を取得
-        portTextArea.setText("");
+        String string_portnumber = portTextField.getText();  // 19190の番号を取得
+        portTextField.setText("");
         portnumber = Integer.parseInt(string_portnumber);   // 19190をint型に
         try {
             showRoomButtonAction(event);
