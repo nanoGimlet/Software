@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="button1" prefHeight="514.0" prefWidth="634.0" styleClass="anchorpane" stylesheets="@ChatSpace.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Label fx:id="label2" alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="-2.0" prefHeight="42.0" prefWidth="445.0">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <ListView fx:id="ListView1" layoutY="40.0" prefHeight="381.0" prefWidth="634.0" styleClass="listbox" />
+      <Button fx:id="closeButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onCloseAction" text="退出" />
+      <Button fx:id="sendButton" layoutX="538.0" layoutY="448.0" mnemonicParsing="false" onAction="#onButton1Action" prefHeight="55.0" prefWidth="85.0" text="送信" />
+      <Button fx:id="startButton" layoutX="511.0" layoutY="10.0" mnemonicParsing="false" onAction="#startAction" prefHeight="25.0" prefWidth="106.0" styleClass="startButton" text="スレッド起動" />
+      <Label fx:id="label1" layoutX="78.0" layoutY="419.0" prefHeight="4.0" prefWidth="505.0" text="スレッドを起動してください">
+         <padding>
+            <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+         </padding>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="textArea" layoutX="88.0" layoutY="448.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="55.0" prefWidth="445.0" wrapText="true" />
+      <Button fx:id="mentionButton" layoutX="18.0" layoutY="477.0" mnemonicParsing="false" onAction="#mentionAction" prefHeight="29.0" prefWidth="60.0" text="メンション" />
+      <TextField fx:id="mentionField" layoutX="14.0" layoutY="448.0" onAction="#mentionAction" prefHeight="25.0" prefWidth="67.0" />
+   </children>
+</AnchorPane>
