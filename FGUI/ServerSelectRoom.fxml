@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="685.0" styleClass="pane" stylesheets="@ServerSelectRoom.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ServerSelectController">
+   <children>
+      <Button fx:id="rooom1" layoutX="48.0" layoutY="82.0" mnemonicParsing="false" onMouseClicked="#room1" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button fx:id="rooom2" layoutX="330.0" layoutY="82.0" mnemonicParsing="false" onMouseClicked="#room2" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button fx:id="rooom3" layoutX="48.0" layoutY="159.0" mnemonicParsing="false" onMouseClicked="#room3" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button fx:id="rooom4" layoutX="330.0" layoutY="159.0" mnemonicParsing="false" onMouseClicked="#room4" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button fx:id="rooom5" layoutX="48.0" layoutY="238.0" mnemonicParsing="false" onMouseClicked="#room5" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button fx:id="rooom6" layoutX="330.0" layoutY="238.0" mnemonicParsing="false" onMouseClicked="#room6" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button fx:id="rooom7" layoutX="48.0" layoutY="316.0" mnemonicParsing="false" onMouseClicked="#room7" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button fx:id="rooom8" layoutX="330.0" layoutY="316.0" mnemonicParsing="false" onMouseClicked="#room8" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button fx:id="rooom9" layoutX="48.0" layoutY="394.0" mnemonicParsing="false" onMouseClicked="#room9" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button fx:id="rooom10" layoutX="330.0" layoutY="394.0" mnemonicParsing="false" onMouseClicked="#room10" prefHeight="59.0" prefWidth="250.0">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="addButton" fx:id="addThema" layoutX="417.0" layoutY="487.0" mnemonicParsing="false" onMouseClicked="#addThema" styleClass="addButton" text="テーマの追加" />
+      <Button id="themaButton" fx:id="updateThema" layoutX="135.0" layoutY="487.0" mnemonicParsing="false" onMouseClicked="#upgradeThema" styleClass="themaButton" text="テーマの更新" />
+      <Text layoutX="207.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="部屋を選択してください">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>
