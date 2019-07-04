@@ -1,0 +1,21 @@
+.pane{
+-fx-background-image:url('zus.jpg');
+-fx-background-image-width:auto;
+}
+.Label{
+-fx-font-size: 20;
+-fx-text-fill: #006464;
+}
+.chatButton{
+-fx-background-color: #;
+-fx-text-fill: black;
+-fx-effect:dropshadow(one-pass-box,gray,8,0.0,2,0);
+}
+.themaButton{
+-fx-background-color: #666666;
+-fx-text-fill: white;
+}
+.addButton{
+-fx-background-color: black;
+-fx-text-fill:white;
+}
