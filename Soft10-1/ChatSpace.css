@@ -1,0 +1,13 @@
+.anchorpane {
+-fx-background-color:#66CCFF;
+}
+.idLabel {
+-fx-font-size: 20;
+}
+.label{
+-fx-text-fill:black;
+}
+.startButton{
+-fx-background-color:gray;
+-fx-text-fill:white;
+}
