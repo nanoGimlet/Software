@@ -10,13 +10,18 @@ public class TalkPaneController {
     private Label talkLabel;
 
     @FXML
+    private Label numLabel;
+
+    @FXML
     void initialize(){
         if(Client_ControlMessage.flag == 0) {
             dateLabel.setText(Controller.getData());
-            talkLabel.setText(Controller.getNumber() - 1 + ". " + Controller.getStrText()); //getText
+            numLabel.setText(Integer.toString(Controller.getNumber()-1)+". ");
+            talkLabel.setText(Controller.getStrText()); //getText
         }else {
             dateLabel.setText(Client_ControlMessage.day);
-            talkLabel.setText(Client_ControlMessage.no - 1 + ". " + Client_ControlMessage.content); //getText
+            numLabel.setText(Integer.toString(Client_ControlMessage.no - 1)+". ");
+            talkLabel.setText(Client_ControlMessage.content); //getText
         }
     }
 }

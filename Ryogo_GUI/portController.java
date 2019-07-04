@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -25,7 +25,7 @@ public class portController {
     public static Connect con;
 
     @FXML
-    private TextArea portTextArea;
+    private TextField portTextField;
     @FXML
     private Label portLabel1;
     @FXML
@@ -33,8 +33,8 @@ public class portController {
 
     @FXML
     void sendPort(ActionEvent event){
-        String string_portnumber = portTextArea.getText();  // 19190の番号を取得
-        portTextArea.setText("");
+        String string_portnumber = portTextField.getText();  // 19190の番号を取得
+        portTextField.setText("");
         portnumber = Integer.parseInt(string_portnumber);   // 19190をint型に
         try {
             showRoomButtonAction(event);
@@ -43,18 +43,21 @@ public class portController {
     }
 
     void chatClient(int PORT) throws IOException {
-        String server = InetAddress.getLocalHost().getHostAddress();
+        String server =InetAddress.getLocalHost().getHostAddress();
+        System.out.println(server);
         System.out.println("PORT:" + PORT);
         Socket socket = null;
         // ここでサーバーとの通信が始まる
         try {
             InetAddress addr = InetAddress.getByName(server);
+            System.out.println(addr);
             socket = new Socket(addr, PORT);
             commonSocket=socket;
+            System.out.println(commonSocket.getInetAddress());
             con = new Connect(); //
             con.connect(socket); //
             chatname2 = con.chatname;
-        } catch (IOException e) {}
+        } catch (IOException e) {System.out.println("not connected");}
     }
 
     void showRoomButtonAction(ActionEvent event){

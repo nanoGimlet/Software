@@ -4,6 +4,7 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.TimeUnit;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +51,6 @@ public class FirstWindowController {
     public Socket soc = portController.commonSocket;
     public Connect client = portController.con;
     public Client_ControlMessage controlMessage;
-    public RoomsendThread rs;
     //public static List<String> chatname2 = new ArrayList<String>();
     //public static Socket commonSocket;
 
@@ -73,18 +73,23 @@ public class FirstWindowController {
      */
 
     @FXML
+    void initialize() throws  Exception {
+
+    }
+
+    @FXML
     void onAction(ActionEvent event) throws Exception {
         Button b = (Button) event.getSource();
         roomName = b.getText();
-        System.out.println(roomName);
+        // 部屋に移動するとroomNameは更新されてる
         if(checkname(roomName)) {
-            System.out.println(roomName);
             showChatButtonAction();
             //Controller.startThread();
         }else {
             System.err.println("not exists");
             System.err.println("Here shows:"+portController.chatname2.toString());
         }
+
     }
 
     void showChatButtonAction() {
@@ -106,41 +111,42 @@ public class FirstWindowController {
         return false;
     }
 
-    int i=4;
-
     @FXML
     void getThema(ActionEvent event){
-        String new_thema= "label1"; //
-        switch(i){
-            case 4:
-                chatButton4.setText(new_thema);
-                break;
-
-            case 5:
-                chatButton5.setText(new_thema);
-                break;
-
-            case 6:
-                chatButton6.setText(new_thema);
-                break;
-
-            case 7:
-                chatButton7.setText(new_thema);
-                break;
-
-            case 8:
-                chatButton8.setText(new_thema);
-                break;
-
-            case 9:
-                chatButton9.setText(new_thema);
-                break;
-
-            case 10:
-                chatButton10.setText(new_thema);
-                break;
+        for(int i = 0; i < client.chatname.size(); i++) {
+            switch (i) {
+                case 0:
+                    chatButton1.setText(client.chatname.get(0));
+                    break;
+                case 1:
+                    chatButton2.setText(client.chatname.get(1));
+                    break;
+                case 2:
+                    chatButton3.setText(client.chatname.get(2));
+                    break;
+                case 3:
+                    chatButton4.setText(client.chatname.get(3));
+                    break;
+                case 4:
+                    chatButton5.setText(client.chatname.get(4));
+                    break;
+                case 5:
+                    chatButton6.setText(client.chatname.get(5));
+                    break;
+                case 6:
+                    chatButton7.setText(client.chatname.get(6));
+                    break;
+                case 7:
+                    chatButton8.setText(client.chatname.get(7));
+                    break;
+                case 8:
+                    chatButton9.setText(client.chatname.get(8));
+                    break;
+                case 9:
+                    chatButton10.setText(client.chatname.get(9));
+                    break;
+            }
         }
-        i++;
     }
 
     @FXML

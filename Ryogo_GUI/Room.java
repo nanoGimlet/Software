@@ -1,13 +1,9 @@
-import java.io.*;
-import java.net.*;
-import java.net.*;
 import java.util.*;
-import java.util.concurrent.*;
 
 public class Room{
     public String room_name;
     public List<Connect> client_list;
-    public ArrayList<String> messlist;// キューの宣言
+    public ArrayList<String> messlist;// 投稿文字の保持
 
     // これ別のクラスで持ち直した方がいんじゃね？
 
@@ -19,10 +15,10 @@ public class Room{
     }*/
 
     public Room(String room_name){
-        this.room_name = room_name;
+        this.room_name = room_name; 
         if (messlist == null) {
-            messlist = new ArrayList<String>(500){};// キューに追加できる要素の最大数を５０個にする
+            messlist = new ArrayList<String>();//その部屋毎のリストを用意
         }
     }
-
+    
 }

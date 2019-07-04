@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ThemaCreate extends Thread {
-    static int PORT = 19190;
-    static ArrayList roomthreads;
     Socket socket;
 
     public ThemaCreate(Socket sct) {

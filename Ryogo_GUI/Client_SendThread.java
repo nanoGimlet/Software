@@ -1,5 +1,3 @@
-//元SendThread
-
 import java.util.*;
 
 class Client_SendThread extends Thread {
@@ -18,19 +16,19 @@ class Client_SendThread extends Thread {
         try {
             System.out.println(currentThread());
             // while (true) {
-                System.out.println("∞");
-                line = Controller.mess;
-                if(line == null) {
-                }else {
-                    System.out.println(line);
-                    Date date = new Date();
-                    String date2 = date.toString();
-                    PrintSplit sendmessage = new PrintSplit(mychatroom, line, date2);
-                    String send = sendmessage.Sendform();
-                    RWcl.out.println(send);
-                    RWcl.out.flush();
-                }
-          //  }
+            System.out.println("∞");
+            line = Controller.mess;
+            if(line == null) {
+            }else {
+                System.out.println(line);
+                Date date = new Date();
+                String date2 = date.toString();
+                PrintSplit sendmessage = new PrintSplit(mychatroom, line, date2);
+                String send = sendmessage.Sendform();
+                RWcl.out.println(send);
+                RWcl.out.flush();
+            }
+            //  }
         } catch (Exception e) {
             System.err.println(e);
         }
