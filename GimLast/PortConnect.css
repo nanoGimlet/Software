@@ -1,0 +1,17 @@
+.root {
+//-fx-background-color:silver;
+-fx-background-image:url('sea.jpg');
+}
+.idLabel {
+-fx-font-size: 20;
+}
+.welcomeLabel{
+-fx-font-size:46;
+-fx-font-weight:bold;
+-fx-text-fill:#006464;
+-fx-effect:dropshadow(gaussian,rgba(255,255,255,0.5),0,0,0,1);
+}
+.button{
+-fx-background-color: black;
+-fx-text-fill:white;
+}
