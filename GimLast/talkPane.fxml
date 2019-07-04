@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="73.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TalkPaneController">
+   <children>
+      <AnchorPane layoutX="1.0" layoutY="3.0" prefHeight="110.0" prefWidth="602.0">
+         <children>
+            <Label fx:id="dateLabel" layoutX="2.0" layoutY="12.0" minHeight="-Infinity" prefHeight="15.0" prefWidth="600.0">
+               <font>
+                  <Font size="11.0" />
+               </font></Label>
+            <Label fx:id="talkLabel" alignment="TOP_LEFT" layoutX="29.0" layoutY="27.0" prefHeight="84.0" prefWidth="573.0" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="numLabel" layoutX="2.0" layoutY="22.0" prefHeight="26.0" prefWidth="28.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
