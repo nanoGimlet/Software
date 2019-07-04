@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="F_anchorpane" fx:id="escapeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="600.0" styleClass="F_anchorpane" stylesheets="@FirstWindowController.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirstWindowController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="2.0" prefHeight="17.0" prefWidth="600.0" text="掲示板が現れた！^ ^" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="8.0" layoutY="37.0" prefHeight="17.0" prefWidth="584.0" text="どの掲示板に入ろうか？">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button id="chatButton" fx:id="chatButton1" layoutX="24.0" layoutY="70.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="chatButton" fx:id="chatButton2" layoutX="316.0" layoutY="70.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="chatButton" fx:id="chatButton3" layoutX="24.0" layoutY="146.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="chatButton" fx:id="chatButton4" layoutX="316.0" layoutY="146.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="chatButton" fx:id="chatButton5" layoutX="24.0" layoutY="224.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="chatButton" fx:id="chatButton6" layoutX="316.0" layoutY="224.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="chatButton" fx:id="chatButton7" layoutX="24.0" layoutY="301.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="chatButton" fx:id="chatButton8" layoutX="316.0" layoutY="301.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="chatButton" fx:id="chatButton9" layoutX="24.0" layoutY="379.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="chatButton" fx:id="chatButton10" layoutX="316.0" layoutY="379.0" mnemonicParsing="false" onAction="#onAction" prefHeight="59.0" prefWidth="250.0" styleClass="chatButton" text="">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+      <Button id="updateButton" fx:id="updateButton" layoutX="93.0" layoutY="469.0" mnemonicParsing="false" onAction="#getThema" styleClass="updateButton" text="テーマを更新する" />
+      <Button id="escapeButton" layoutX="412.0" layoutY="469.0" mnemonicParsing="false" onAction="#escape" styleClass="escapeButton" text="退出する" />
+   </children>
+</AnchorPane>
