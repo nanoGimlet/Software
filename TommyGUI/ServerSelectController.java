@@ -40,16 +40,6 @@ public class ServerSelectController {
 
     @FXML
     void initialize() {
-        rooom1.setVisible(false);
-        rooom2.setVisible(false);
-        rooom3.setVisible(false);
-        rooom4.setVisible(false);
-        rooom5.setVisible(false);
-        rooom6.setVisible(false);
-        rooom7.setVisible(false);
-        rooom8.setVisible(false);
-        rooom9.setVisible(false);
-        rooom10.setVisible(false);
 
     }
 
